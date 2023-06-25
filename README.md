@@ -1,2 +1,2 @@
 # Portfolio
-Alhmdulillah this is my simple portfolio project hope you like
+Alhmdulillah this is my simple portfolio project hope you like it
