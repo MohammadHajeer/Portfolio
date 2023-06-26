@@ -116,30 +116,32 @@ function createHeader(language) {
   liButton.appendChild(langButton);
   navUl.appendChild(liButton);
 
-  let buttons = document.createElement("li");
-  buttons.id = "buttons";
-  let liCloseButton = document.createElement("span");
+  let liCloseButton = document.createElement("li");
   liCloseButton.className = "close-menu";
   let liCloseButtonIcon = document.createElement("i");
   liCloseButtonIcon.className = "fa fa-close";
   liCloseButton.appendChild(liCloseButtonIcon);
   liCloseButton.addEventListener("click", closeMenu);
-  buttons.appendChild(liCloseButton);
-
-  let themeSwitcher = document.createElement("span");
-  themeSwitcher.id = "themeSwitcher";
-  themeSwitcher.addEventListener("click", switchTheme);
-  let themeSwitcherIcon = document.createElement("i");
-  if (localStorage.theme == "Dark") {
-    themeSwitcherIcon.className = "fa fa-sun";
-  } else {
-    themeSwitcherIcon.className = "fa fa-moon";
-  }
-  themeSwitcher.appendChild(themeSwitcherIcon);
-  buttons.appendChild(themeSwitcher);
-
-  navUl.appendChild(buttons);
+  navUl.prepend(liCloseButton);
   nav.appendChild(navUl);
+
+  let themeSwitcher = document.createElement("li");
+  themeSwitcher.id = "themeSwitcher";
+  let checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = "check";
+  if (localStorage.theme == "Dark") checkbox.checked = true;
+  checkbox.addEventListener("click", switchTheme);
+  themeSwitcher.appendChild(checkbox);
+  let label = document.createElement("label");
+  label.setAttribute("for", "check");
+  let switcher = document.createElement("div");
+  switcher.id = "switcher";
+  label.appendChild(switcher);
+  themeSwitcher.appendChild(label);
+  navUl.appendChild(themeSwitcher);
+  nav.appendChild(navUl);
+
   let menuSpan = document.createElement("span");
   menuSpan.className = "menu";
   let menuSpanIcon = document.createElement("i");
@@ -157,55 +159,29 @@ function createHeader(language) {
     a.href = `#${id}`;
     a.appendChild(document.createTextNode(text));
     li.appendChild(a);
-    li.addEventListener("click", onLinkClick);
     return li;
   }
 
   function openMenu() {
     navUl.classList.add("toggle-list");
   }
+
   function closeMenu() {
     navUl.classList.remove("toggle-list");
-  }
-
-  function onLinkClick(e) {
-    let links = [
-      navUl.children[0],
-      navUl.children[1],
-      navUl.children[2],
-      navUl.children[3],
-    ];
-
-    // Close navbar
-    navUl.classList.remove("toggle-list");
-    // Active Shape
-    let shape = document.createElement("span");
-    shape.className = "active-shape";
-    links.forEach((li) => {
-      li.classList.remove("active");
-      if (li.childElementCount == 2) {
-        li.children[1].remove();
-      }
-    });
-    e.currentTarget.classList.add("active");
-    e.currentTarget.appendChild(shape);
   }
 
   function switchLanguage() {
     ulButton.classList.toggle("open-lang-menu");
     buttonSpanIcon.classList.toggle("show-list");
-    buttons.classList.toggle("open-lang");
   }
 
   function switchTheme(e) {
     if (localStorage.theme == "Dark") {
       localStorage.theme = "Light";
-      e.currentTarget.firstElementChild.className = "fa fa-moon";
       document.body.classList.remove("dark-mode");
       document.querySelector(".wave").src = "images/light-mode-wave.svg";
     } else {
       localStorage.theme = "Dark";
-      e.currentTarget.firstElementChild.className = "fa fa-sun";
       document.body.classList.add("dark-mode");
       document.querySelector(".wave").src = "images/dark-mode-wave.svg";
     }
@@ -646,7 +622,7 @@ function createWebsite(language) {
     localStorage.theme = "Light";
   }
   if (!localStorage.language) {
-    localStorage.language = "English"
+    localStorage.language = "English";
   }
   document.body.innerHTML = "";
   if (language == "English") {

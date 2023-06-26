@@ -123,11 +123,7 @@ a {
   color: var(--main-color);
   box-shadow: 0 0 5px var(--main-color) inset;
   z-index: 500;
-}
-@media (min-width: 767px) {
-  #scrollButton {
-    display: none;
-  }
+  display: none;
 }
 /* End Global Rules */
 /* Start Component */
@@ -235,10 +231,10 @@ header .container ul {
   align-items: center;
   gap: 3px;
 }
-header .container ul li:not(:nth-child(5)) {
+/* header .container ul li:not(:nth-child(5)) {
   position: relative;
   overflow: hidden;
-}
+} */
 @media (max-width: 767px) {
   header .container ul {
     position: fixed;
@@ -265,6 +261,9 @@ header .container ul li:not(:nth-child(5)) {
     width: 100%;
     text-align: center;
   }
+}
+header .container ul li {
+  position: relative;
 }
 header .container ul a {
   display: flex;
@@ -375,26 +374,12 @@ header .container nav .menu {
     display: none;
   }
 }
-header .container ul #buttons {
-  background-color: var(--bg-color);
-  padding: 5px 10px;
-  border-radius: 5px;
+header .container ul #themeSwitcher {
   margin-left: 10px;
   cursor: pointer;
   color: var(--text-color);
 }
 @media (max-width: 767px) {
-  header .container ul #buttons {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 50px;
-    transition: 0.3s;
-    background: none;
-  }
-  header .container ul #buttons.open-lang {
-    margin-top: 100px;
-  }
   header .container ul #themeSwitcher,
   header .container ul .close-menu {
     width: 60px;
@@ -404,10 +389,59 @@ header .container ul #buttons {
     justify-content: center;
     padding: 0;
     font-size: 25px;
-    border-radius: 10px;
-    box-shadow: 0 0px 10px var(--text-color) inset;
     color: var(--text-color);
+    margin-right: auto;
   }
+  body.lang header .container ul .close-menu {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  header .container ul #themeSwitcher {
+    position: absolute;
+    right: 10px;
+    background: none;
+  }
+  body.lang header .container ul #themeSwitcher {
+    right: auto;
+    left: 10px;
+  }
+}
+header .container ul #themeSwitcher #check {
+  display: none;
+}
+header .container ul #themeSwitcher label {
+  cursor: pointer;
+}
+header .container ul #themeSwitcher #check:checked + label #switcher::before {
+  content: "\f186";
+  transform: translate(30px, -50%);
+}
+header .container ul #themeSwitcher #switcher {
+  width: 60px;
+  height: 20px;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  position: relative;
+}
+header .container ul #themeSwitcher #switcher::before {
+  content: "\f185";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-360deg);
+  transition: var(--transition-time);
+  color: var(--main-color);
+  font-family: "Font Awesome 5 Free";
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px var(--text-color);
 }
 header .container ul .close-menu:hover {
   background-color: var(--main-color);
