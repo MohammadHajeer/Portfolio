@@ -423,7 +423,7 @@ function createAboutSection(language) {
   );
   createFeature(
     "fa-solid fa-diagram-project",
-    language == "English" ? "ٍSupport" : "دعم",
+    language == "English" ? "Support" : "دعم",
     "12/7"
   );
   details.appendChild(features);
@@ -560,7 +560,7 @@ function createProjectSection(language) {
 
   function showMoreProjects(e) {
     if (e.currentTarget.getAttribute("data-set") == "show") {
-      fetchProjects(0, 16, language == "English" ? "English" : "Arabic");
+      fetchProjects(0, "length", language == "English" ? "English" : "Arabic");
       e.currentTarget.firstElementChild.innerHTML =
         language == "English" ? "Show Less !" : "اظهار القليل !";
       e.currentTarget.setAttribute("data-set", "less");
@@ -679,6 +679,9 @@ function createWebsite(language) {
 
 async function fetchProjects(start, end, language) {
   let projects = await (await fetch("projects.json")).json();
+  if (end == "length") {
+    end = projects.length;
+  }
   createProjects(projects, start, end, language);
 }
 
