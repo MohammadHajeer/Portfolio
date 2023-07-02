@@ -1,4 +1,17 @@
-createLoader();
+let loader = document.getElementById("loader");
+
+let i = 0;
+setInterval(() => {
+  if (loader.children.item(i).classList.contains("load")) {
+    loader.children.item(i).classList.remove("load");
+  } else {
+    loader.children.item(i).classList.add("load");
+  }
+  i++;
+  if (i == 9) {
+    i = 0;
+  }
+}, 150);
 
 window.onload = () => {
   document.body.classList.remove("backdrop");
@@ -8,29 +21,6 @@ window.onload = () => {
     createWebsite("English");
   }
 };
-
-function createLoader() {
-  let loader = document.createElement("div");
-  loader.id = "loader";
-  for (let i = 0; i < 9; i++) {
-    let span = document.createElement("span");
-    loader.appendChild(span);
-  }
-
-  let i = 0;
-  setInterval(() => {
-    if (loader.children.item(i).classList.contains("load")) {
-      loader.children.item(i).classList.remove("load");
-    } else {
-      loader.children.item(i).classList.add("load");
-    }
-    i++;
-    if (i == 9) {
-      i = 0;
-    }
-  }, 150);
-  document.body.prepend(loader);
-}
 
 function createScrollButton() {
   let button = document.createElement("button");
@@ -624,12 +614,12 @@ function createWebsite(language) {
   if (!localStorage.language) {
     localStorage.language = "English";
   }
-  document.body.innerHTML = "";
   if (language == "English") {
     document.body.classList.remove("lang");
   } else {
     document.body.classList.add("lang");
   }
+  document.body.innerHTML = "";
   createHeader(language);
   createHomeSection(language);
   createAboutSection(language);
