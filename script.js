@@ -1,20 +1,4 @@
-let loader = document.getElementById("loader");
-
-let i = 0;
-setInterval(() => {
-  if (loader.children.item(i).classList.contains("load")) {
-    loader.children.item(i).classList.remove("load");
-  } else {
-    loader.children.item(i).classList.add("load");
-  }
-  i++;
-  if (i == 9) {
-    i = 0;
-  }
-}, 150);
-
 window.onload = () => {
-  document.body.classList.remove("backdrop");
   if (localStorage.language) {
     createWebsite(localStorage.language);
   } else {
@@ -620,6 +604,7 @@ function createWebsite(language) {
     document.body.classList.add("lang");
   }
   document.body.innerHTML = "";
+  document.body.classList.add("backdrop")
   createHeader(language);
   createHomeSection(language);
   createAboutSection(language);
@@ -665,6 +650,8 @@ function createWebsite(language) {
   });
 
   links[0].click();
+
+  createLoader();
 }
 
 async function fetchProjects(start, end, language) {
@@ -705,4 +692,32 @@ function createProjects(array, start, end, language) {
     };
     projectsContainer.appendChild(project);
   }
+}
+
+function createLoader() {
+  let loader = document.createElement("div");
+  loader.id = "loader";
+  for (let i = 0; i < 9; i++) {
+    let span = document.createElement("span");
+    loader.appendChild(span);
+  }
+  document.body.appendChild(loader);
+  let i = 0;
+  let handler = setInterval(() => {
+    if (loader.children.item(i).classList.contains("load")) {
+      loader.children.item(i).classList.remove("load");
+    } else {
+      loader.children.item(i).classList.add("load");
+    }
+    i++;
+    if (i == 9) {
+      i = 0;
+    }
+    console.log(1);
+  }, 80);
+  setTimeout(() => {
+    clearInterval(handler);
+    document.getElementById("loader").remove();
+    document.body.classList.remove("backdrop")
+  }, 2000);
 }
