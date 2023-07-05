@@ -110,6 +110,18 @@ a {
   height: 120px;
 }
 
+#loader span:nth-child(2).load,
+#loader span:nth-child(4).load,
+#loader span:nth-child(6).load,
+#loader span:nth-child(8).load {
+  transform: translateY(15px);
+}
+#loader span:nth-child(3).load,
+#loader span:nth-child(5).load,
+#loader span:nth-child(7).load {
+  transform: translateY(-15px);
+}
+
 #scrollButton {
   position: fixed;
   bottom: 40px;

@@ -800,7 +800,9 @@ function createProjects(array, start, end, language) {
     let repo = document.createElement("a");
     repo.href = array[i].repo;
     repo.target = "_blank";
-    repo.appendChild(document.createTextNode("Source Code"));
+    repo.appendChild(
+      document.createTextNode(language == "English" ? "Source Code" : "الكود")
+    );
     let repoIcon = document.createElement("i");
     repoIcon.className = "fa-brands fa-github";
     repo.appendChild(repoIcon);
@@ -808,7 +810,9 @@ function createProjects(array, start, end, language) {
     let websiteLink = document.createElement("a");
     websiteLink.href = array[i].url;
     websiteLink.target = "_blank";
-    websiteLink.appendChild(document.createTextNode("URL"));
+    websiteLink.appendChild(
+      document.createTextNode(language == "English" ? "URL" : "الرابط")
+    );
     let websiteLinkIcon = document.createElement("i");
     websiteLinkIcon.className = "fa-solid fa-link";
     websiteLink.appendChild(websiteLinkIcon);
