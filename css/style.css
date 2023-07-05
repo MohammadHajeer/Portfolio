@@ -115,8 +115,6 @@ a {
   bottom: 40px;
   right: 20px;
   border: none;
-  width: 40px;
-  height: 40px;
   font-size: 30px;
   border-radius: 10px;
   background-color: var(--text-color);
@@ -124,6 +122,15 @@ a {
   box-shadow: 0 0 5px var(--main-color) inset;
   z-index: 500;
   display: none;
+}
+#scrollButton i {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-color);
+  cursor: pointer;
 }
 /* End Global Rules */
 /* Start Component */
@@ -247,14 +254,14 @@ header .container ul {
     background-color: var(--main-color);
     transition: 0.3s;
   }
-  header .container nav .toggle-list {
-    right: 0%;
+  header .container nav ul.toggle-list {
+    right: 0;
   }
   body.lang header .container ul {
     right: auto;
     left: -150%;
   }
-  body.lang header .container nav .toggle-list {
+  body.lang header .container nav ul.toggle-list {
     left: 0;
   }
   header .container ul li {
@@ -390,20 +397,20 @@ header .container ul #themeSwitcher {
     padding: 0;
     font-size: 25px;
     color: var(--text-color);
-    margin-right: auto;
+    margin-left: auto;
   }
   body.lang header .container ul .close-menu {
-    margin-left: auto;
-    margin-right: 0;
+    margin-right: auto;
+    margin-left: 0;
   }
   header .container ul #themeSwitcher {
     position: absolute;
-    right: 10px;
+    left: 10px;
     background: none;
   }
   body.lang header .container ul #themeSwitcher {
-    right: auto;
-    left: 10px;
+    left: auto;
+    right: 10px;
   }
 }
 header .container ul #themeSwitcher #check {
@@ -886,12 +893,13 @@ body.lang .home .container .details p .auto-type {
 .skills .container .skill {
   color: var(--text-color);
   background-color: var(--bg-color);
-  width: 150px;
+  width: 160px;
   padding: 15px;
   position: relative;
   z-index: 1;
   transition: var(--transition-time);
   box-shadow: 0 0 5px var(--bg-backdrop) inset;
+  text-align: center;
 }
 .skills .container .skill:hover {
   transform: scale(1.05);
@@ -912,8 +920,9 @@ body.lang .home .container .details p .auto-type {
 .skills .container .skill:hover::before {
   height: 100%;
 }
-.skills .container .skill img {
-  width: 100%;
+.skills .container .skill i {
+  font-size: 100px;
+  color: var(--text-color);
 }
 .skills .container .skill p {
   font-size: 20px;
@@ -930,42 +939,178 @@ body.lang .home .container .details p .auto-type {
 }
 .projects .container .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 20px;
   transition: 0.5s;
 }
-
+.projects .container .filter-projects {
+  margin-bottom: 20px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .projects .container .filter-projects {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.projects .container .filter-projects .projects-count {
+  color: var(--main-color);
+  text-shadow: 0 0 5px var(--text-color);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--selected-color);
+  padding: 10px;
+  height: 60px;
+  border-radius: 10px;
+}
+.projects .container .filter-projects .projects-count span {
+  text-shadow: none;
+}
+.projects .container .filter-projects #projectsCount {
+  color: var(--text-color);
+  font-size: 20px;
+}
+.projects .container .projects-filter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: var(--selected-color);
+  padding: 10px;
+  gap: 5px;
+}
+.projects .container .projects-filter .title {
+  color: var(--text-color);
+  font-weight: 700;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.projects .container .projects-filter #filterButton {
+  color: var(--text-color);
+  background-color: var(--selected-color, red);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.projects .container .projects-filter #filterButton i {
+  transition: var(--transition-time);
+}
+.projects .container .projects-filter #filterButton i.open {
+  transform: rotate(180deg);
+  text-shadow: 0 0 5px var(--text-color);
+}
+.projects .container .projects-filter ul {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  transform: translateY(calc(100% + 10px));
+  border-radius: 10px;
+  background-color: var(--bg-color-2);
+  color: var(--text-color);
+  z-index: 100;
+  text-align: center;
+  transition: var(--transition-time);
+  box-shadow: 0 0px 10px 2px var(--bg-color-2);
+  opacity: 0;
+}
+.projects .container .projects-filter ul.open {
+  height: 200px;
+  opacity: 1;
+}
+.projects .container .projects-filter ul li {
+  height: 25%;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: var(--transition-time);
+}
+.projects .container .projects-filter ul li.active {
+  font-weight: 700;
+}
+.projects .container .projects-filter ul li::before {
+  content: "";
+  position: absolute;
+  border: solid 0px var(--main-color);
+  border-radius: 50%;
+  z-index: -1;
+  transition: var(--transition-time);
+}
+.projects .container .projects-filter ul li:hover::before,
+.projects .container .projects-filter ul li.active::before {
+  border-width: 200px;
+}
 .projects .container .project {
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
-  height: 200px;
   animation: show-up 1s linear forwards;
-  /* opacity: 0; */
+  padding: 10px 10px 0;
+  background-color: var(--bg-color-2);
+  box-shadow: 0 0 5px var(--bg-color-2);
+}
+.projects .container .project .image {
+  position: relative;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .projects .container .project img {
   width: 100%;
   height: 100%;
 }
-.projects .container .project .descriptions {
+.projects .container .project .title {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
   background-color: var(--bg-backdrop);
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  transition: var(--transition-time);
+  padding: 10px 0;
   color: var(--text-color);
 }
-.projects .container .project:hover .descriptions {
-  transform: translateY(100%);
+.projects .container .project .descriptions {
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 12px;
+  padding: 10px;
+}
+.projects .container .project .descriptions a {
+  background-color: var(--bg-color);
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: var(--transition-time);
+}
+.projects .container .project .descriptions a:hover {
+  box-shadow: 0 25px 0px var(--text-color) inset;
+  color: var(--main-color);
 }
 .projects .container button.show-more {
   margin: 20px auto 0 auto;

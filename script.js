@@ -7,7 +7,7 @@ window.onload = () => {
 };
 
 function createScrollButton() {
-  let button = document.createElement("button");
+  let button = document.createElement("span");
   button.id = "scrollButton";
   let buttonIcon = document.createElement("i");
   buttonIcon.className = "fa-solid fa-caret-up";
@@ -129,6 +129,9 @@ function createHeader(language) {
 
   function createNavListItem(id, text) {
     let li = document.createElement("li");
+    li.addEventListener("click", () => {
+      navUl.classList.remove("toggle-list");
+    });
     let a = document.createElement("a");
     a.href = `#${id}`;
     a.appendChild(document.createTextNode(text));
@@ -159,12 +162,6 @@ function createHeader(language) {
       document.body.classList.add("dark-mode");
       document.querySelector(".wave").src = "images/dark-mode-wave.svg";
     }
-    document
-      .querySelectorAll("#Skills .container div div img")
-      .forEach((img) => {
-        let imgSrc = `${img.src.match(/-\w+/gi).join("")}.svg`;
-        img.src = `images/${localStorage.theme + imgSrc}`;
-      });
   }
 
   function chooseLanguage(e) {
@@ -277,7 +274,6 @@ function createHomeSection(language) {
 
   function downloadCV() {
     let filePath = `./cvs/My-CV-${localStorage.language}.pdf`;
-    console.log(filePath);
     let link = document.createElement("a");
     link.href = filePath;
     link.setAttribute("download", "CV.pdf");
@@ -445,11 +441,9 @@ function createSkillsSection(language) {
   tools.appendChild(toolsH2);
   let toolsSkillsContainer = document.createElement("div");
   toolsSkillsContainer.className = "skills-container";
+  toolsSkillsContainer.appendChild(createSkill("fa-brands fa-git-alt", "Git"));
   toolsSkillsContainer.appendChild(
-    createSkill(`images/${localStorage.theme}-Theme-GIT.svg`, "Git")
-  );
-  toolsSkillsContainer.appendChild(
-    createSkill(`images/${localStorage.theme}-Theme-GitHub.svg`, "Github")
+    createSkill("fa-brands fa-github", "Github")
   );
   tools.appendChild(toolsSkillsContainer);
   container.appendChild(tools);
@@ -464,27 +458,25 @@ function createSkillsSection(language) {
   let languagesSkillsContainer = document.createElement("div");
   languagesSkillsContainer.className = "skills-container";
   languagesSkillsContainer.appendChild(
-    createSkill(`images/${localStorage.theme}-Theme-HTML.svg`, "HTML")
+    createSkill("fa-brands fa-html5", "HTML")
   );
+  languagesSkillsContainer.appendChild(createSkill("fa-brands fa-css3", "CSS"));
   languagesSkillsContainer.appendChild(
-    createSkill(`images/${localStorage.theme}-Theme-CSS.svg`, "CSS")
+    createSkill("fa-brands fa-js", "JavaScript")
   );
-  languagesSkillsContainer.appendChild(
-    createSkill(`images/${localStorage.theme}-Theme-JS.svg`, "JavaScript")
-  );
+  languagesSkillsContainer.appendChild(createSkill("fa-brands fa-php", "Php"));
   languages.appendChild(languagesSkillsContainer);
   container.appendChild(languages);
 
   skills.appendChild(container);
   document.body.appendChild(skills);
 
-  function createSkill(imgSrc, title) {
+  function createSkill(iconClass, title) {
     let skill = document.createElement("div");
     skill.className = "skill";
-    let img = document.createElement("img");
-    img.src = imgSrc;
-    img.alt = title + " svg from SVG Repo";
-    skill.appendChild(img);
+    let icon = document.createElement("i");
+    icon.className = iconClass;
+    skill.appendChild(icon);
     let p = document.createElement("p");
     p.appendChild(document.createTextNode(title));
     skill.appendChild(p);
@@ -506,6 +498,80 @@ function createProjectSection(language) {
 
   let container = document.createElement("div");
   container.className = "container";
+
+  let projectsFilter = document.createElement("div");
+  projectsFilter.className = "filter-projects";
+
+  let projectsCount = document.createElement("p");
+  projectsCount.className = "projects-count";
+  projectsCount.appendChild(
+    document.createTextNode(
+      language == "English" ? "Projects Count: " : "عدد المشاريع:"
+    )
+  );
+  let projectsCountSpan = document.createElement("span");
+  projectsCountSpan.id = "projectsCount";
+  projectsCountSpan.appendChild(document.createTextNode(0));
+  projectsCount.appendChild(projectsCountSpan);
+  projectsFilter.appendChild(projectsCount);
+
+  let filter = document.createElement("div");
+  filter.className = "projects-filter";
+  let filterTitle = document.createElement("span");
+  filterTitle.setAttribute("data-filter", "All");
+  filterTitle.className = "title";
+  filterTitle.appendChild(
+    document.createTextNode(
+      language == "English" ? "All Projects" : "كل المشاريع"
+    )
+  );
+  filter.appendChild(filterTitle);
+  let filterButton = document.createElement("span");
+  filterButton.addEventListener("click", openFilters);
+  filterButton.id = "filterButton";
+  let filterButtonIcon = document.createElement("i");
+  filterButtonIcon.className = "fa-solid fa-angle-up";
+  filterButton.appendChild(filterButtonIcon);
+  filter.appendChild(filterButton);
+  let filterUl = document.createElement("ul");
+  filterUl.className = "filters";
+  let li_1 = document.createElement("li");
+  li_1.classList.add("active");
+  li_1.setAttribute("data-filter", "All");
+  li_1.appendChild(
+    document.createTextNode(
+      language == "English" ? "All Projects" : "كل المشاريع"
+    )
+  );
+  let li_2 = document.createElement("li");
+  li_2.setAttribute("data-filter", "Frontend-Mentor");
+  li_2.appendChild(
+    document.createTextNode(
+      language == "English"
+        ? "Frontend Mentor Challenges"
+        : "تحديات Frontend Mentor"
+    )
+  );
+  let li_3 = document.createElement("li");
+  li_3.setAttribute("data-filter", "Youtube");
+  li_3.appendChild(
+    document.createTextNode(
+      language == "English" ? "Youtube Projects" : "مشاريع اليوتيوب"
+    )
+  );
+  let li_4 = document.createElement("li");
+  li_4.setAttribute("data-filter", "Owned");
+  li_4.appendChild(
+    document.createTextNode(language == "English" ? "My Projects" : "مشاريعي")
+  );
+  filterUl.appendChild(li_1);
+  filterUl.appendChild(li_2);
+  filterUl.appendChild(li_3);
+  filterUl.appendChild(li_4);
+  filter.appendChild(filterUl);
+
+  projectsFilter.appendChild(filter);
+  container.appendChild(projectsFilter);
 
   let projectsContainer = document.createElement("div");
   projectsContainer.className = "projects-container";
@@ -534,19 +600,54 @@ function createProjectSection(language) {
 
   function showMoreProjects(e) {
     if (e.currentTarget.getAttribute("data-set") == "show") {
-      fetchProjects(0, "length", language == "English" ? "English" : "Arabic");
+      fetchProjects(
+        0,
+        "length",
+        language == "English" ? "English" : "Arabic",
+        filterTitle.getAttribute("data-filter")
+      );
       e.currentTarget.firstElementChild.innerHTML =
         language == "English" ? "Show Less !" : "اظهار القليل !";
       e.currentTarget.setAttribute("data-set", "less");
       e.currentTarget.lastElementChild.className = "fa-solid fa-angle-up";
     } else {
-      fetchProjects(0, 6, language == "English" ? "English" : "Arabic");
+      fetchProjects(
+        0,
+        6,
+        language == "English" ? "English" : "Arabic",
+        filterTitle.getAttribute("data-filter")
+      );
       e.currentTarget.firstElementChild.innerHTML =
         language == "English" ? "Show More !" : "اظهار المزيد !";
       e.currentTarget.setAttribute("data-set", "show");
       e.currentTarget.lastElementChild.className = "fa-solid fa-angle-down";
     }
   }
+
+  function openFilters() {
+    filterUl.classList.toggle("open");
+    filterButtonIcon.classList.toggle("open");
+  }
+  [...filterUl.children].forEach((li) => {
+    li.onclick = () => {
+      filterButton.click();
+      [...filterUl.children].forEach((li) => li.classList.remove("active"));
+      li.classList.add("active");
+      filterTitle.innerHTML = li.innerHTML;
+      filterTitle.setAttribute("data-filter", li.getAttribute("data-filter"));
+      if (showMoreButton.getAttribute("data-set") == "less") {
+        showMoreButton.click();
+      }
+      fetchProjects(0, 6, language, li.getAttribute("data-filter"));
+      setTimeout(() => {
+        if (projectsCountSpan.innerHTML <= 6) {
+          showMoreButton.style.display = "none";
+        } else {
+          showMoreButton.style.display = "flex";
+        }
+      }, 10);
+    };
+  });
 }
 
 function createFooter(language) {
@@ -604,7 +705,7 @@ function createWebsite(language) {
     document.body.classList.add("lang");
   }
   document.body.innerHTML = "";
-  document.body.classList.add("backdrop")
+  document.body.classList.add("backdrop");
   createHeader(language);
   createHomeSection(language);
   createAboutSection(language);
@@ -613,7 +714,7 @@ function createWebsite(language) {
   createFooter(language);
   createScrollButton();
 
-  fetchProjects(0, 6, language);
+  fetchProjects(0, 6, language, "All");
 
   let links = document.querySelectorAll("nav ul li a");
   let sections = document.querySelectorAll("body > div:not(:first-child)");
@@ -654,15 +755,21 @@ function createWebsite(language) {
   createLoader();
 }
 
-async function fetchProjects(start, end, language) {
+async function fetchProjects(start, end, language, title) {
   let projects = await (await fetch("projects.json")).json();
-  if (end == "length") {
-    end = projects.length;
+  if (title != "All") {
+    projects = projects.filter((e) => {
+      return e.Title == title;
+    });
   }
+  if (end == "length") end = projects.length;
+  if (projects.length < 6) end = projects.length;
   createProjects(projects, start, end, language);
 }
 
 function createProjects(array, start, end, language) {
+  let projectsCount = document.getElementById("projectsCount");
+  projectsCount.innerHTML = array.length;
   let projectsContainer = document.querySelector(
     ".projects .container .projects-container"
   );
@@ -673,23 +780,42 @@ function createProjects(array, start, end, language) {
     project.style.animationDelay = `${timeDelay}ms`;
     timeDelay += 100;
     project.className = "project";
+    let image = document.createElement("div");
+    image.className = "image";
     let img = document.createElement("img");
     img.src = array[i].src;
     img.alt = "Project Image";
-    project.appendChild(img);
-    let span = document.createElement("span");
-    span.className = "descriptions";
-    let projectTitle = document.createElement("h2");
+    image.appendChild(img);
+    let projectTitle = document.createElement("h3");
+    projectTitle.className = "title";
     projectTitle.appendChild(
       document.createTextNode(
         language == "English" ? array[i].Name : array[i].NameAR
       )
     );
-    span.appendChild(projectTitle);
-    project.appendChild(span);
-    project.onclick = () => {
-      window.open(array[i].url, "_blank");
-    };
+    image.appendChild(projectTitle);
+    project.appendChild(image);
+    let descriptions = document.createElement("div");
+    descriptions.className = "descriptions";
+    let repo = document.createElement("a");
+    repo.href = array[i].repo;
+    repo.target = "_blank";
+    repo.appendChild(document.createTextNode("Source Code"));
+    let repoIcon = document.createElement("i");
+    repoIcon.className = "fa-brands fa-github";
+    repo.appendChild(repoIcon);
+    descriptions.appendChild(repo);
+    let websiteLink = document.createElement("a");
+    websiteLink.href = array[i].url;
+    websiteLink.target = "_blank";
+    websiteLink.appendChild(document.createTextNode("URL"));
+    let websiteLinkIcon = document.createElement("i");
+    websiteLinkIcon.className = "fa-solid fa-link";
+    websiteLink.appendChild(websiteLinkIcon);
+    descriptions.appendChild(websiteLink);
+
+    project.appendChild(descriptions);
+
     projectsContainer.appendChild(project);
   }
 }
@@ -713,11 +839,10 @@ function createLoader() {
     if (i == 9) {
       i = 0;
     }
-    console.log(1);
   }, 80);
   setTimeout(() => {
     clearInterval(handler);
     document.getElementById("loader").remove();
-    document.body.classList.remove("backdrop")
+    document.body.classList.remove("backdrop");
   }, 2000);
 }
