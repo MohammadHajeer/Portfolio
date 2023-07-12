@@ -782,10 +782,7 @@ function createProjects(array, start, end, language) {
     project.className = "project";
     let image = document.createElement("div");
     image.className = "image";
-    let img = document.createElement("img");
-    img.src = array[i].src;
-    img.alt = "Project Image";
-    image.appendChild(img);
+    image.style.backgroundImage = `url(${array[i].src})`;
     let projectTitle = document.createElement("h3");
     projectTitle.className = "title";
     projectTitle.appendChild(

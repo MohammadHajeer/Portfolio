@@ -1086,10 +1086,9 @@ body.lang .home .container .details p .auto-type {
   height: 200px;
   border-radius: 20px;
   overflow: hidden;
-}
-.projects .container .project img {
-  width: 100%;
-  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .projects .container .project .title {
   position: absolute;
