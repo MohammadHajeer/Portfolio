@@ -464,7 +464,7 @@ function createSkillsSection(language) {
   languagesSkillsContainer.appendChild(
     createSkill("fa-brands fa-js", "JavaScript")
   );
-  languagesSkillsContainer.appendChild(createSkill("fa-brands fa-php", "Php"));
+  // languagesSkillsContainer.appendChild(createSkill("fa-brands fa-php", "Php"));
   languages.appendChild(languagesSkillsContainer);
   container.appendChild(languages);
 
@@ -579,6 +579,7 @@ function createProjectSection(language) {
   container.appendChild(projectsContainer);
 
   let showMoreButton = document.createElement("button");
+  showMoreButton.id = "showMoreButton";
   showMoreButton.className = "show-more btn";
   showMoreButton.setAttribute("data-set", "show");
   showMoreButton.addEventListener("click", showMoreProjects);
@@ -639,13 +640,6 @@ function createProjectSection(language) {
         showMoreButton.click();
       }
       fetchProjects(0, 6, language, li.getAttribute("data-filter"));
-      setTimeout(() => {
-        if (projectsCountSpan.innerHTML <= 6) {
-          showMoreButton.style.display = "none";
-        } else {
-          showMoreButton.style.display = "flex";
-        }
-      }, 10);
     };
   });
 }
@@ -763,7 +757,12 @@ async function fetchProjects(start, end, language, title) {
     });
   }
   if (end == "length") end = projects.length;
-  if (projects.length < 6) end = projects.length;
+  if (projects.length <= 6) {
+    end = projects.length;
+    document.getElementById("showMoreButton").style.display = "none";
+  } else {
+    document.getElementById("showMoreButton").style.display = "flex";
+  }
   createProjects(projects, start, end, language);
 }
 
@@ -782,7 +781,9 @@ function createProjects(array, start, end, language) {
     project.className = "project";
     let image = document.createElement("div");
     image.className = "image";
-    image.style.backgroundImage = `url(${array[i].src})`;
+    let img = document.createElement("div");
+    img.className = "img";
+    img.style.backgroundImage = `url(${array[i].src})`;
     let projectTitle = document.createElement("h3");
     projectTitle.className = "title";
     projectTitle.appendChild(
@@ -790,8 +791,21 @@ function createProjects(array, start, end, language) {
         language == "English" ? array[i].Name : array[i].NameAR
       )
     );
-    image.appendChild(projectTitle);
+    img.appendChild(projectTitle);
+    image.appendChild(img);
     project.appendChild(image);
+
+    let tools = document.createElement("div");
+    tools.className = "tools";
+
+    for (let tool of array[i].tools) {
+      let span = document.createElement("span");
+      span.className = tool;
+      span.appendChild(document.createTextNode(tool));
+      tools.appendChild(span);
+    }
+    project.appendChild(tools);
+
     let descriptions = document.createElement("div");
     descriptions.className = "descriptions";
     let repo = document.createElement("a");
