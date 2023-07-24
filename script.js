@@ -800,8 +800,13 @@ function createProjects(array, start, end, language) {
 
     for (let tool of array[i].tools) {
       let span = document.createElement("span");
-      span.className = tool;
-      span.appendChild(document.createTextNode(tool));
+      span.className = "tool";
+      let toolIcon = document.createElement("i");
+      toolIcon.className = `fa-brands fa-${tool == "tailwind-css" ? "css3": tool}`
+      span.appendChild(toolIcon)
+      let text = document.createElement("h5")
+      text.appendChild(document.createTextNode(tool));
+      span.appendChild(text)
       tools.appendChild(span);
     }
     project.appendChild(tools);
