@@ -1,4 +1,5 @@
 window.onload = () => {
+  console.log(1)
   if (localStorage.language) {
     createWebsite(localStorage.language);
   } else {

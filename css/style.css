@@ -129,9 +129,10 @@ a {
   border: none;
   font-size: 30px;
   border-radius: 10px;
-  background-color: var(--text-color);
-  color: var(--main-color);
-  box-shadow: 0 0 5px var(--main-color) inset;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  box-shadow: 0 0 5px 2px var(--main-color) inset, 0 0 5px 2px var(--main-color) inset,
+    0 0 5px 3px var(--text-color) inset;
   z-index: 500;
   display: none;
 }
@@ -141,7 +142,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--main-color);
   cursor: pointer;
 }
 /* End Global Rules */
@@ -433,11 +433,11 @@ header .container ul #themeSwitcher label {
 }
 header .container ul #themeSwitcher #check:checked + label #switcher::before {
   content: "\f186";
-  transform: translate(30px, -50%);
+  transform: translate(40px, -50%);
 }
 header .container ul #themeSwitcher #switcher {
-  width: 60px;
-  height: 20px;
+  width: 70px;
+  height: 30px;
   background-color: var(--bg-color);
   border-radius: 50px;
   position: relative;
@@ -447,20 +447,21 @@ header .container ul #themeSwitcher #switcher::before {
   position: absolute;
   width: 30px;
   height: 30px;
-  background-color: var(--text-color);
+  background-color: var(--main-color);
   border-radius: 50%;
-  left: 0;
+  left: 0px;
   top: 50%;
-  transform: translateY(-50%) rotate(-360deg);
+  transform: translate(0, -50%) rotate(-360deg);
   transition: var(--transition-time);
-  color: var(--main-color);
+  color: var(--text-color);
   font-family: "Font Awesome 5 Free";
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 800;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5px var(--text-color);
+  box-shadow: 0 0 5px 2px var(--main-color) inset, 0 0 5px 2px var(--main-color) inset,
+    0 0 5px 3px var(--text-color) inset, 0 0 5px var(--text-color);
 }
 header .container ul .close-menu:hover {
   background-color: var(--main-color);
