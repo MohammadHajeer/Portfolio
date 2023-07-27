@@ -131,8 +131,8 @@ a {
   border-radius: 10px;
   background-color: var(--main-color);
   color: var(--text-color);
-  box-shadow: 0 0 5px 2px var(--main-color) inset, 0 0 5px 2px var(--main-color) inset,
-    0 0 5px 3px var(--text-color) inset;
+  box-shadow: 0 0 5px 2px var(--main-color) inset,
+    0 0 5px 2px var(--main-color) inset, 0 0 5px 3px var(--text-color) inset;
   z-index: 500;
   display: none;
 }
@@ -169,18 +169,43 @@ a {
 }
 
 .special-header {
+  position: relative;
   text-align: center;
   font-size: 40px;
-  color: var(--bg-color);
-  color: var(--main-color);
-  text-shadow: 0 0 4px var(--text-color);
-  letter-spacing: -3px;
-  margin-bottom: 60px;
-}
-.special-header::first-letter {
   color: var(--text-color);
-  font-size: 50px;
-  text-shadow: 0 0 3px var(--text-color);
+  letter-spacing: 3px;
+  /* border: 3px solid var(--main-color); */
+  width: fit-content;
+  margin: 0 auto 60px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  z-index: 1;
+  overflow: hidden;
+  cursor: default;
+}
+
+.special-header.hovered {
+  color: var(--text-color);
+}
+.special-header .ball {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  background: transparent;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1s;
+  z-index: -1;
+}
+.special-header.hovered .ball {
+  width: 30px;
+  height: 30px;
+  transition: 0.1s;
+  border: 5px solid var(--main-color);
+  background: none;
+  box-shadow: 0 0 5px 1000px var(--main-color), 0 0 5px var(--text-color) inset;
 }
 
 .btn {
@@ -194,13 +219,6 @@ a {
   cursor: pointer;
 }
 /* End Component */
-/* Start FrameWork */
-@media (max-width: 767px) {
-  .hide-mobile {
-    display: none;
-  }
-}
-/* End FrameWork */
 /* Start Header */
 header {
   background-color: var(--main-color);
@@ -250,10 +268,7 @@ header .container ul {
   align-items: center;
   gap: 3px;
 }
-/* header .container ul li:not(:nth-child(5)) {
-  position: relative;
-  overflow: hidden;
-} */
+
 @media (max-width: 767px) {
   header .container ul {
     position: fixed;
@@ -388,6 +403,9 @@ header .container nav .menu {
   color: var(--text-color);
   cursor: pointer;
 }
+header .container nav .menu i {
+  font-size: 25px;
+}
 @media (min-width: 767px) {
   header .container nav .menu {
     display: none;
@@ -460,8 +478,9 @@ header .container ul #themeSwitcher #switcher::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5px 2px var(--main-color) inset, 0 0 5px 2px var(--main-color) inset,
-    0 0 5px 3px var(--text-color) inset, 0 0 5px var(--text-color);
+  box-shadow: 0 0 5px 2px var(--main-color) inset,
+    0 0 5px 2px var(--main-color) inset, 0 0 5px 3px var(--text-color) inset,
+    0 0 5px var(--text-color);
 }
 header .container ul .close-menu:hover {
   background-color: var(--main-color);

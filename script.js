@@ -1,10 +1,11 @@
 window.onload = () => {
-  console.log(1)
   if (localStorage.language) {
     createWebsite(localStorage.language);
   } else {
     createWebsite("English");
   }
+
+  // console.log(document.querySelectorAll(".special-header")[2].offsetTop)
 };
 
 function createScrollButton() {
@@ -336,6 +337,7 @@ function createAboutSection(language) {
   about.className = "about";
   about.id = "About";
 
+  about.appendChild(createSpecialHeader(language, "About Me", "وصف عني"));
   let waveImage = document.createElement("img");
   waveImage.className = "wave";
   if (localStorage.theme == "Dark") {
@@ -345,13 +347,6 @@ function createAboutSection(language) {
   }
   waveImage.alt = "Wave Image";
   about.appendChild(waveImage);
-
-  let h2 = document.createElement("h2");
-  h2.className = "special-header";
-  h2.appendChild(
-    document.createTextNode(language == "English" ? "About Me" : "وصف عني")
-  );
-  about.appendChild(h2);
 
   let container = document.createElement("div");
   container.className = "container";
@@ -380,7 +375,7 @@ function createAboutSection(language) {
   detailsP.appendChild(
     document.createTextNode(
       language == "English"
-        ? "Hello, I'm Mohammad an intermediate frontend developer hoping to become a full-stack in the future In-Shaa-Allah ( If God Wills )"
+        ? "Hello, I'm Mohammad, an intermediate frontend developer hoping to become a full-stack developer in the future, In-Shaa-Allah (If God wills)."
         : "مرحبا, انا محمد مبرمج جيد في واجهة المستخدم متاملا ان اصبح مبرمج كامل (واجهة وخلفية) في المستقبل ان شاء الله تعالى"
     )
   );
@@ -423,12 +418,7 @@ function createSkillsSection(language) {
   skills.className = "skills";
   skills.id = "Skills";
 
-  let h2 = document.createElement("h2");
-  h2.className = "special-header";
-  h2.appendChild(
-    document.createTextNode(language == "English" ? "Skills" : "المهارات")
-  );
-  skills.appendChild(h2);
+  skills.appendChild(createSpecialHeader(language, "Skills", "المهارات"));
 
   let container = document.createElement("div");
   container.className = "container";
@@ -490,12 +480,7 @@ function createProjectSection(language) {
   projects.className = "projects";
   projects.id = "Projects";
 
-  let h2 = document.createElement("h2");
-  h2.className = "special-header";
-  h2.appendChild(
-    document.createTextNode(language == "English" ? "Projects" : "المشاريع")
-  );
-  projects.appendChild(h2);
+  projects.appendChild(createSpecialHeader(language, "Projects", "المشاريع"));
 
   let container = document.createElement("div");
   container.className = "container";
@@ -803,11 +788,13 @@ function createProjects(array, start, end, language) {
       let span = document.createElement("span");
       span.className = "tool";
       let toolIcon = document.createElement("i");
-      toolIcon.className = `fa-brands fa-${tool == "tailwind-css" ? "css3": tool}`
-      span.appendChild(toolIcon)
-      let text = document.createElement("h5")
+      toolIcon.className = `fa-brands fa-${
+        tool == "tailwind-css" ? "css3" : tool
+      }`;
+      span.appendChild(toolIcon);
+      let text = document.createElement("h5");
       text.appendChild(document.createTextNode(tool));
-      span.appendChild(text)
+      span.appendChild(text);
       tools.appendChild(span);
     }
     project.appendChild(tools);
@@ -866,4 +853,32 @@ function createLoader() {
     document.getElementById("loader").remove();
     document.body.classList.remove("backdrop");
   }, 2000);
+}
+
+function createSpecialHeader(language, engHeader, arbHeader) {
+  let h2 = document.createElement("h2");
+  h2.className = "special-header";
+  h2.appendChild(
+    document.createTextNode(language == "English" ? engHeader : arbHeader)
+  );
+  let ball = document.createElement("span");
+  ball.className = "ball";
+  h2.appendChild(ball);
+
+  h2.addEventListener("mousemove", (e) => {
+    const boxRect = h2.getBoundingClientRect();
+
+    ball.style.top = `${e.clientY - boxRect.top}px`;
+    ball.style.left = `${e.clientX - boxRect.left}px`;
+  });
+
+  h2.addEventListener("mouseleave", () => {
+    h2.classList.remove("hovered");
+  });
+
+  h2.addEventListener("mouseenter", () => {
+    h2.classList.add("hovered");
+  });
+
+  return h2;
 }
