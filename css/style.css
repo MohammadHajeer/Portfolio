@@ -245,24 +245,45 @@ body.lang header .container h2 {
   margin-left: 0;
   margin-right: 20px;
 }
-header .container h2::before {
-  content: "";
+
+header .container h2 .logo-shape,
+header .container h2 .logo-shape::before,
+header .container h2 .logo-shape::after {
   position: absolute;
   border: solid 15px;
   border-color: var(--text-color) transparent var(--text-color)
     var(--text-color);
   border-radius: 50%;
-  left: -30px;
+  left: -35px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-body.lang header .container h2::before {
+header .container h2 .logo-shape::before,
+header .container h2 .logo-shape::after {
+  content: "";
+  top: 0;
+  left: -15px;
+  animation: pakman1 1s linear infinite;
+}
+header .container h2 .logo-shape::after {
+  animation: pakman 1s linear infinite;
+  animation-direction: alternate-reverse;
+}
+
+body.lang header .container h2 .logo-shape,
+body.lang header .container h2 .logo-shape::before,
+body.lang header .container h2 .logo-shape::after {
   border-color: var(--text-color) var(--text-color) var(--text-color)
     transparent;
   left: auto;
-  right: -30px;
+  right: -35px;
 }
+body.lang header .container h2 .logo-shape::before,
+body.lang header .container h2 .logo-shape::after {
+  right: -15px;
+}
+
 header .container ul {
   display: flex;
   align-items: center;
@@ -874,92 +895,71 @@ body.lang .home .container .details p .auto-type {
   background-color: var(--bg-color-2);
   padding: var(--padding) 0;
 }
+
 .skills .container {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
   gap: 20px;
-}
-.skills .container > div {
-  background-color: var(--bg-color);
-  width: 400px;
-  max-width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-}
-.skills .container > div::before,
-.skills .container > div::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 80px;
-  background-color: rgba(0, 0, 0, 0.1);
-  transform: rotate(45deg) scaleX(2);
-  transition: 0.3s;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.skills .container > div::before {
-  right: 0;
-  top: 0;
-}
-.skills .container > div::after {
-  left: 0;
-  bottom: 0;
-}
-.skills .container > div > h2 {
-  border-bottom: 5px solid var(--bg-backdrop);
-  padding: 10px;
-  text-align: center;
-  color: var(--text-color);
-  background-color: var(--bg-backdrop);
-  letter-spacing: 2px;
-}
-.skills .container > div > div {
-  padding: 20px;
+.skills .skill {
+  width: 150px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  gap: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 5px 5px var(--bg-color-2);
 }
-.skills .container .skill {
-  color: var(--text-color);
+.skills .skill h4 {
+  font-size: 20px;
+  padding: 5px;
   background-color: var(--bg-color);
-  width: 160px;
-  padding: 15px;
+  color: var(--text-color);
+}
+.skills .skill i {
+  font-size: 70px;
+  color: var(--text-color);
+}
+.skills .skill .progress-bar {
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.4);
   position: relative;
   z-index: 1;
-  transition: var(--transition-time);
-  box-shadow: 0 0 5px var(--bg-backdrop) inset;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.skills .container .skill:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 5px var(--bg-backdrop);
+body.dark-mode .skills .skill .progress-bar {
+  background-color: rgba(255, 255, 255, 0.4);
 }
-.skills .container .skill::before {
+.skills .skill .progress-bar::before {
+  content: attr(data-completion);
+  color: var(--text-color);
+  font-weight: 800;
+}
+.skills .skill .progress-completion {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-backdrop);
+  z-index: -1;
+  overflow: hidden;
+}
+.skills .skill .progress-completion::before {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  z-index: -1;
-  background-color: var(--selected-color);
-  border-top: 1px solid var(--text-color);
-  transition: var(--transition-time);
-}
-.skills .container .skill:hover::before {
   height: 100%;
-}
-.skills .container .skill i {
-  font-size: 100px;
-  color: var(--text-color);
-}
-.skills .container .skill p {
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
+  width: 1px;
+  background-color: var(--bg-backdrop);
+  box-shadow: 0 0 10px 10px var(--bg-backdrop);
+  left: 0;
+  animation: progress 1.5s linear infinite;
 }
 /* End Skills */
 /* Start Projects */
@@ -1028,7 +1028,7 @@ body.lang .home .container .details p .auto-type {
 }
 .projects .container .projects-filter #filterButton {
   color: var(--text-color);
-  background-color: var(--selected-color, red);
+  background-color: var(--selected-color);
   width: 40px;
   height: 40px;
   display: flex;
@@ -1097,7 +1097,6 @@ body.lang .home .container .details p .auto-type {
   position: relative;
   overflow: hidden;
   animation: show-up 1s linear forwards;
-  /* padding: 10px 10px 0; */
   background-color: var(--bg-color-2);
   box-shadow: 0 0 5px var(--bg-color-2);
 }
@@ -1226,6 +1225,26 @@ footer p {
 }
 /* End Contact */
 /* Start Animation */
+@keyframes pakman {
+  0%,
+  100% {
+    transform: translateY(-50%) rotate(0);
+  }
+  50% {
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+@keyframes pakman1 {
+  0%,
+  100% {
+    transform: translateY(-50%) rotate(0);
+  }
+  50% {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+}
+
 @keyframes backdrop {
   from {
     width: 0;
@@ -1234,6 +1253,15 @@ footer p {
   to {
     width: 100%;
     height: 100%;
+  }
+}
+
+@keyframes progress {
+  from {
+    left: -50%;
+  }
+  to {
+    left: 150%;
   }
 }
 

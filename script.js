@@ -32,6 +32,9 @@ function createHeader(language) {
   logoH2.appendChild(
     document.createTextNode(language == "English" ? "Hajeer" : "حجير")
   );
+  let logoShape = document.createElement("span");
+  logoShape.className = "logo-shape";
+  logoH2.appendChild(logoShape);
   logo.appendChild(logoH2);
   container.appendChild(logo);
 
@@ -423,54 +426,33 @@ function createSkillsSection(language) {
   let container = document.createElement("div");
   container.className = "container";
 
-  let tools = document.createElement("div");
-  tools.className = "tools";
-  let toolsH2 = document.createElement("h2");
-  toolsH2.appendChild(
-    document.createTextNode(language == "English" ? "Tools" : "الادوات")
-  );
-  tools.appendChild(toolsH2);
-  let toolsSkillsContainer = document.createElement("div");
-  toolsSkillsContainer.className = "skills-container";
-  toolsSkillsContainer.appendChild(createSkill("fa-brands fa-git-alt", "Git"));
-  toolsSkillsContainer.appendChild(
-    createSkill("fa-brands fa-github", "Github")
-  );
-  tools.appendChild(toolsSkillsContainer);
-  container.appendChild(tools);
-
-  let languages = document.createElement("div");
-  languages.className = "languages";
-  let languagesH2 = document.createElement("h2");
-  languagesH2.appendChild(
-    document.createTextNode(language == "English" ? "Languages" : "اللغات")
-  );
-  languages.appendChild(languagesH2);
-  let languagesSkillsContainer = document.createElement("div");
-  languagesSkillsContainer.className = "skills-container";
-  languagesSkillsContainer.appendChild(
-    createSkill("fa-brands fa-html5", "HTML")
-  );
-  languagesSkillsContainer.appendChild(createSkill("fa-brands fa-css3", "CSS"));
-  languagesSkillsContainer.appendChild(
-    createSkill("fa-brands fa-js", "JavaScript")
-  );
-  // languagesSkillsContainer.appendChild(createSkill("fa-brands fa-php", "Php"));
-  languages.appendChild(languagesSkillsContainer);
-  container.appendChild(languages);
+  container.appendChild(createSkill("fa-brands fa-html5", "Html", 70));
+  container.appendChild(createSkill("fa-brands fa-css3", "CSS", 70));
+  container.appendChild(createSkill("fa-brands fa-js", "Javascript", 60));
+  container.appendChild(createSkill("fa-brands fa-git-alt", "Git", 40));
+  container.appendChild(createSkill("fa-brands fa-github", "Github", 50));
+  container.appendChild(createSkill("fa-brands fa-react", "React", 30));
 
   skills.appendChild(container);
   document.body.appendChild(skills);
 
-  function createSkill(iconClass, title) {
+  function createSkill(iconClass, title, progress) {
     let skill = document.createElement("div");
     skill.className = "skill";
-    let icon = document.createElement("i");
-    icon.className = iconClass;
-    skill.appendChild(icon);
-    let p = document.createElement("p");
-    p.appendChild(document.createTextNode(title));
-    skill.appendChild(p);
+    let skillName = document.createElement("h4");
+    skillName.appendChild(document.createTextNode(title));
+    skill.appendChild(skillName);
+    let skillLogo = document.createElement("i");
+    skillLogo.className = iconClass;
+    skill.appendChild(skillLogo);
+    let skillCompletion = document.createElement("div");
+    skillCompletion.setAttribute("data-completion", `${progress}%`);
+    skillCompletion.className = "progress-bar";
+    let completion = document.createElement("span");
+    completion.style.width = `${progress}%`;
+    completion.className = "progress-completion";
+    skillCompletion.appendChild(completion);
+    skill.appendChild(skillCompletion);
     return skill;
   }
 }
