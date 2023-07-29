@@ -132,9 +132,9 @@ a {
   font-size: 30px;
   border-radius: 10px;
   background-color: var(--main-color);
-  color: var(--text-color);
   box-shadow: 0 0 5px 2px var(--main-color) inset,
-    0 0 5px 2px var(--main-color) inset, 0 0 5px 3px var(--text-color) inset;
+    0 0 5px 2px var(--main-color) inset,
+    0 0 5px 3px var(--high-light-color) inset;
   z-index: 500;
   display: none;
 }
@@ -145,6 +145,11 @@ a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: var(--high-light-color);
+}
+body.lang #scrollButton {
+  right: auto;
+  left: 20px;
 }
 /* End Global Rules */
 /* Start Component */
@@ -185,6 +190,7 @@ a {
   z-index: 1;
   overflow: hidden;
   cursor: default;
+  box-shadow: 0 5px 0 var(--high-light-color);
 }
 
 .special-header.hovered {
@@ -194,7 +200,6 @@ a {
   position: absolute;
   width: 1000px;
   height: 1000px;
-  background: transparent;
   top: 0;
   left: 0;
   border-radius: 50%;
@@ -208,8 +213,7 @@ a {
   transition: 0.1s;
   border: 5px solid var(--main-color);
   background: none;
-  box-shadow: 0 0 5px 1000px var(--main-color),
-    0 0 5px var(--high-light-color) inset;
+  box-shadow: 0 0 5px 1000px var(--high-light-color);
 }
 
 .btn {
@@ -240,14 +244,15 @@ header .container {
 }
 header .container h2 {
   color: var(--high-light-color);
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   font-weight: 700;
   position: relative;
-  margin-left: 20px;
+  margin-left: 40px;
+  text-transform: uppercase;
 }
 body.lang header .container h2 {
   margin-left: 0;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 header .container h2 .logo-shape,
@@ -258,7 +263,7 @@ header .container h2 .logo-shape::after {
   border-color: var(--high-light-color) transparent var(--high-light-color)
     var(--high-light-color);
   border-radius: 50%;
-  left: -35px;
+  left: -40px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -281,7 +286,7 @@ body.lang header .container h2 .logo-shape::after {
   border-color: var(--high-light-color) var(--high-light-color)
     var(--high-light-color) transparent;
   left: auto;
-  right: -35px;
+  right: -40px;
 }
 body.lang header .container h2 .logo-shape::before,
 body.lang header .container h2 .logo-shape::after {
@@ -333,6 +338,9 @@ header .container ul a {
   transition: var(--transition-time);
   position: relative;
   overflow: hidden;
+}
+header .container ul li.active a {
+  color: var(--high-light-color);
 }
 @media (max-width: 767px) {
   header .container ul a {
@@ -459,12 +467,12 @@ header .container ul #themeSwitcher {
   }
   header .container ul #themeSwitcher {
     position: absolute;
-    left: 10px;
+    left: 20px;
     background: none;
   }
   body.lang header .container ul #themeSwitcher {
     left: auto;
-    right: 10px;
+    right: 20px;
   }
 }
 header .container ul #themeSwitcher #check {
@@ -608,21 +616,20 @@ header .container ul li button ul {
     transform: translateX(50%);
   }
 }
-header .container ul li button .open-lang-menu {
+header .container ul li button ul.open-lang-menu {
   height: 80px;
 }
 @media (max-width: 767px) {
-  header .container ul li button .open-lang-menu {
+  header .container ul li button ul.open-lang-menu {
     height: 100px;
   }
 }
 header .container ul li button ul li {
-  /* padding: 10px; */
   width: 100%;
   height: 50%;
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding: 0 10px;
   text-align: left;
   transition: var(--transition-time);
   font-weight: 500;
@@ -662,7 +669,8 @@ header .container ul li button ul .active-lang {
   padding: 20px;
   animation: open 1s linear forwards;
   z-index: 11;
-  box-shadow: 0 0 5px 10px var(--main-color) inset;
+  box-shadow: 0 0 20px 5px var(--main-color) inset,
+    5px 0 0 var(--high-light-color), -5px 0 0 var(--high-light-color);
 }
 @media (max-width: 767px) {
   .home .container {
@@ -773,13 +781,11 @@ body.lang .home .container .details p .auto-type {
 .home .container .details .download {
   margin-top: 30px;
   transition: 0.3s;
-  /* box-shadow: 0 0 5px var(--high-light-color) inset; */
   background-color: var(--high-light-color);
   color: var(--main-color);
   overflow: hidden;
 }
 .home .container .details .download:hover {
-  /* background-color: var(--high-light-color); */
   box-shadow: 0 40px 0 var(--bg-color) inset;
   color: var(--text-color);
 }
@@ -839,9 +845,8 @@ body.lang .home .container .details p .auto-type {
   filter: brightness(80%);
 }
 .about .container .portfolio-image .desgin {
-  background-color: var(--text-color);
+  background-color: var(--high-light-color);
   position: absolute;
-  box-shadow: 0 0 5px var(--main-color) inset;
 }
 .about .container .portfolio-image .desgin.d1,
 .desgin.d2 {
@@ -1129,7 +1134,7 @@ body.dark-mode .skills .skill .progress-bar {
   overflow: hidden;
   animation: show-up 1s linear forwards;
   background-color: var(--bg-color-2);
-  box-shadow: 0 0 5px var(--bg-color-2);
+  box-shadow: 0 0 5px var(--bg-color-2), 0 4px 0px var(--high-light-color);
 }
 .projects .container .project .image {
   padding: 10px;
@@ -1169,7 +1174,7 @@ body.dark-mode .skills .skill .progress-bar {
   justify-content: space-evenly;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: var(--bg-color);
+  background-color: var(--high-light-color);
 }
 body.lang .projects .container .project .tools {
   flex-direction: row-reverse;
