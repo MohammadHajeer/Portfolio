@@ -444,7 +444,7 @@ function createSkillsSection(language) {
     skillName.appendChild(document.createTextNode(title));
     skill.appendChild(skillName);
     let skillLogo = document.createElement("img");
-    skillLogo.src = `./images/${imgName}-icon.svg`
+    skillLogo.src = `./images/${imgName}-icon.svg`;
     skill.appendChild(skillLogo);
     let skillCompletion = document.createElement("div");
     skillCompletion.setAttribute("data-completion", `${progress}%`);
@@ -485,6 +485,7 @@ function createProjectSection(language) {
   projectsFilter.appendChild(projectsCount);
 
   let filter = document.createElement("div");
+  filter.addEventListener("click", openFilters);
   filter.className = "projects-filter";
   let filterTitle = document.createElement("span");
   filterTitle.setAttribute("data-filter", "All");
@@ -496,7 +497,7 @@ function createProjectSection(language) {
   );
   filter.appendChild(filterTitle);
   let filterButton = document.createElement("span");
-  filterButton.addEventListener("click", openFilters);
+
   filterButton.id = "filterButton";
   let filterButtonIcon = document.createElement("i");
   filterButtonIcon.className = "fa-solid fa-angle-up";
