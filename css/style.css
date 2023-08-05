@@ -191,10 +191,14 @@ body.lang #scrollButton {
   overflow: hidden;
   cursor: default;
   box-shadow: 0 5px 0 var(--high-light-color);
+  transition: 0.3s;
 }
 
 .special-header.hovered {
   color: var(--text-color);
+  box-shadow: 0 0 0 var(--high-light-color),
+    5px 0px 0 var(--high-light-color) inset,
+    -5px 0px 0 var(--high-light-color) inset;
 }
 .special-header .ball {
   position: absolute;
@@ -204,12 +208,12 @@ body.lang #scrollButton {
   left: 0;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  transition: 1s;
+  transition: 0.7s;
   z-index: -1;
 }
 .special-header.hovered .ball {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   transition: 0.1s;
   border: 5px solid var(--main-color);
   background: none;
@@ -653,8 +657,8 @@ header .container ul li button ul .active-lang {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: var(--padding) 0;
   position: relative;
+  min-height: 100vh;
 }
 @media (max-width: 767px) {
   .home {
@@ -665,10 +669,10 @@ header .container ul li button ul .active-lang {
   margin-top: 20px;
   border-radius: 20px;
   background-color: var(--bg-color);
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 20px;
   animation: open 1s linear forwards;
   z-index: 11;
@@ -679,9 +683,11 @@ header .container ul li button ul .active-lang {
   .home .container {
     border-radius: 0;
     flex-direction: column-reverse;
+    gap: 40px;
     height: 100%;
     background-color: var(--main-color);
     box-shadow: none;
+    margin-top: 70px;
   }
   .home .container > div {
     width: 100%;
@@ -722,6 +728,9 @@ footer .links a:hover {
   position: relative;
   width: 50%;
   transition: var(--transition-time);
+  background-color: var(--selected-color);
+  border-radius: 20px;
+  box-shadow:0 5px 0 var(--high-light-color), 0 -5px 0 var(--high-light-color);
 }
 .home .container .profile-pic:hover {
   filter: brightness(80%);
@@ -729,7 +738,6 @@ footer .links a:hover {
 @media (max-width: 767px) {
   .home .container .profile-pic {
     width: 100%;
-    margin-top: 20px;
   }
 }
 .home .container .profile-pic .my-self {
