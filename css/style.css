@@ -33,7 +33,7 @@ body.dark-mode {
   --text-color: white;
   --par-color: rgba(255, 255, 255, 0.5);
   --bg-backdrop: rgba(0, 0, 0, 0.5);
-  --selected-color: rgba(255, 255, 255, 0.03);
+  --selected-color: rgba(255, 255, 255, 0.05);
 }
 body.lang {
   direction: rtl;
@@ -230,10 +230,36 @@ body.lang #scrollButton {
   font-weight: 700;
   cursor: pointer;
 }
+
+#backdropEffect {
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 800px 200px var(--high-light-color);
+  top: 0;
+  left: 0%;
+  transform: translate(-100%, -100%);
+  z-index: 2000;
+  border-radius: 50%;
+}
+body.lang #backdropEffect {
+  left: auto;
+  right: 0;
+  transform: translate(100%, -100%);
+}
+@media (max-width: 996px) {
+  #backdropEffect {
+    transform: translate(-200%, 0);
+  }
+  body.lang #backdropEffect {
+    transform: translate(200%, 0);
+  }
+}
 /* End Component */
 /* Start Header */
 header {
-  /* background-color: var(--main-color); */
+  background-color: var(--bg-backdrop);
   z-index: 999;
   position: fixed;
   width: 100%;
@@ -344,6 +370,7 @@ header .container ul a {
   transition: var(--transition-time);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 header .container ul li.active a {
   color: var(--high-light-color);
@@ -497,6 +524,7 @@ header .container ul #themeSwitcher #switcher {
   background-color: var(--bg-color);
   border-radius: 50px;
   position: relative;
+  box-shadow: 0 0 1px var(--high-light-color) inset;
 }
 header .container ul #themeSwitcher #switcher::before {
   content: "\f185";
@@ -679,13 +707,19 @@ header .container ul li button ul .active-lang {
   box-shadow: 0 0 20px 5px var(--main-color) inset,
     5px 0 0 var(--high-light-color), -5px 0 0 var(--high-light-color);
 }
+@media (max-width: 996px) {
+  .home .container {
+    margin-top: 120px;
+    flex-direction: column;
+  }
+}
 @media (max-width: 767px) {
   .home .container {
     border-radius: 0;
     flex-direction: column-reverse;
+    background-color: var(--main-color);
     gap: 40px;
     height: 100%;
-    background-color: var(--main-color);
     box-shadow: none;
     margin-top: 70px;
   }
@@ -699,7 +733,7 @@ header .container ul li button ul .active-lang {
   justify-content: center;
   gap: 6px;
 }
-@media (max-width: 767px) {
+@media (max-width: 996px) {
   .home .container .social-links {
     flex-direction: row;
   }
@@ -728,16 +762,17 @@ footer .links a:hover {
   position: relative;
   width: 50%;
   transition: var(--transition-time);
-  background-color: var(--selected-color);
   border-radius: 20px;
-  box-shadow:0 5px 0 var(--high-light-color), 0 -5px 0 var(--high-light-color);
+  box-shadow: 0 0 20px var(--selected-color),
+    0 0 60px 40px var(--selected-color) inset;
 }
 .home .container .profile-pic:hover {
   filter: brightness(80%);
 }
 @media (max-width: 767px) {
   .home .container .profile-pic {
-    width: 100%;
+  background-color: var(--selected-color);
+  width: 100%;
   }
 }
 .home .container .profile-pic .my-self {
@@ -757,6 +792,12 @@ body.lang .home .container .profile-pic .my-self {
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
+}
+@media (max-width: 996px) {
+  .home .container .details {
+    align-items: center;
+    text-align: center;
+  }
 }
 .home .container .details h1 {
   letter-spacing: -2px;
@@ -797,7 +838,8 @@ body.lang .home .container .details p .auto-type {
   overflow: hidden;
 }
 .home .container .details .download:hover {
-  box-shadow: 0 40px 0 var(--bg-color) inset;
+  box-shadow: 0px 0px 0px 10px var(--bg-color),
+    0px 0px 10px 10px var(--high-light-color);
   color: var(--text-color);
 }
 .home .container .details .scroll {

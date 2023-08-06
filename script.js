@@ -233,7 +233,9 @@ function createHomeSection(language) {
   let pSpan3 = document.createElement("span");
   pSpan3.className = "cursor";
   pSpan3.appendChild(document.createTextNode("|"));
-  pStatus.appendChild(pSpan1);
+  if (window.screen.width > 996) {
+    pStatus.appendChild(pSpan1);
+  }
   pStatus.appendChild(pSpan2);
   pStatus.appendChild(pSpan3);
   details.appendChild(pStatus);
@@ -670,6 +672,7 @@ function createWebsite(language) {
   }
   document.body.innerHTML = "";
   document.body.classList.add("backdrop");
+  createBackdropEffect()
   createHeader(language);
   createHomeSection(language);
   createAboutSection(language);
@@ -865,4 +868,11 @@ function createSpecialHeader(language, engHeader, arbHeader) {
   });
 
   return h2;
+}
+
+function createBackdropEffect() {
+  let span = document.createElement("span")
+  span.id = "backdropEffect"
+
+  document.body.appendChild(span);
 }
