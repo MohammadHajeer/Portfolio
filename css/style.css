@@ -151,6 +151,32 @@ body.lang #scrollButton {
   right: auto;
   left: 20px;
 }
+
+#backdropEffect {
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 800px 200px var(--high-light-color);
+  top: 0;
+  left: 0%;
+  transform: translate(-100%, -100%);
+  z-index: 2000;
+  border-radius: 50%;
+}
+body.lang #backdropEffect {
+  left: auto;
+  right: 0;
+  transform: translate(100%, -100%);
+}
+@media (max-width: 996px) {
+  #backdropEffect {
+    transform: translate(-200%, 0);
+  }
+  body.lang #backdropEffect {
+    transform: translate(200%, 0);
+  }
+}
 /* End Global Rules */
 /* Start Component */
 .container {
@@ -229,32 +255,6 @@ body.lang #scrollButton {
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
-}
-
-#backdropEffect {
-  position: absolute;
-  display: block;
-  width: 200px;
-  height: 200px;
-  box-shadow: 0 0 800px 200px var(--high-light-color);
-  top: 0;
-  left: 0%;
-  transform: translate(-100%, -100%);
-  z-index: 2000;
-  border-radius: 50%;
-}
-body.lang #backdropEffect {
-  left: auto;
-  right: 0;
-  transform: translate(100%, -100%);
-}
-@media (max-width: 996px) {
-  #backdropEffect {
-    transform: translate(-200%, 0);
-  }
-  body.lang #backdropEffect {
-    transform: translate(200%, 0);
-  }
 }
 /* End Component */
 /* Start Header */
@@ -397,7 +397,8 @@ header .container ul li.active a::before {
   height: 8px;
   border-radius: 50%;
   z-index: 11;
-  transition: 0.3s;
+  transition: 1s;
+  box-shadow: 0 0 80px 20px var(--high-light-color);
 }
 header .container ul a::before {
   transform: translate(-50%, 50%) scale(0);
@@ -811,6 +812,8 @@ body.lang .home .container .profile-pic .my-self {
 .home .container .details p:first-of-type {
   font-size: 20px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 .home .container .details p .auto-type {
   margin-left: 10px;
@@ -822,7 +825,14 @@ body.lang .home .container .details p .auto-type {
 }
 .home .container .details p .cursor {
   background-color: var(--bg-color);
-  box-shadow: 0 0 5px var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 30px;
+  color: var(--high-light-color);
+  box-shadow: 0 0 5px var(--high-light-color) inset;
+  border-radius: 5px;
   animation: cursor 0.7s linear infinite;
 }
 .home .container .details p:last-of-type {
