@@ -1,6 +1,18 @@
 [
     {
         "Title": "Frontend-Mentor",
+        "Name": "Todo-App",
+        "NameAR": "قائمة المهمات",
+        "tools": [
+            "react",
+            "tailwind-css"
+        ],
+        "url": "https://mohammadhajeer.github.io/Todo-App",
+        "repo": "https://github.com/MohammadHajeer/Todo-App",
+        "src": "./images/todo-app.jpeg"
+    },
+    {
+        "Title": "Frontend-Mentor",
         "Name": "URL Shortening API",
         "NameAR": "تقصير عنوان URL",
         "tools": [
