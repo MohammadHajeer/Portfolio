@@ -452,7 +452,7 @@ function createSkillsSection(language) {
     skillCompletion.setAttribute("data-completion", `${progress}%`);
     skillCompletion.className = "progress-bar";
     let completion = document.createElement("span");
-    completion.style.width = `${progress}%`;
+    completion.style.width = `${100 - progress}%`;
     completion.className = "progress-completion";
     skillCompletion.appendChild(completion);
     skill.appendChild(skillCompletion);
@@ -875,4 +875,9 @@ function createBackdropEffect() {
   span.id = "backdropEffect"
 
   document.body.appendChild(span);
+}
+
+function createColorPicker() {
+  let colors = document.createElement("div");
+  colors.className = "colors-picker"
 }
