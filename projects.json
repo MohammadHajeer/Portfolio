@@ -1,6 +1,18 @@
 [
     {
         "Title": "Frontend-Mentor",
+        "Name": "Rock, Paper and Scissors game",
+        "NameAR": "لعبة حجرة ورقة مقص",
+        "tools": [
+            "react",
+            "tailwind-css"
+        ],
+        "url": "https://mohammadhajeer.github.io/Rock-Paper-Scissor",
+        "repo": "https://github.com/MohammadHajeer/Rock-Paper-Scissor",
+        "src": "./images/Rock-Paper-Scissor.jpeg"
+    },
+    {
+        "Title": "Frontend-Mentor",
         "Name": "Todo-App",
         "NameAR": "قائمة المهمات",
         "tools": [
