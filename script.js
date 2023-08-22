@@ -4,8 +4,6 @@ window.onload = () => {
   } else {
     createWebsite("English");
   }
-
-  // console.log(document.querySelectorAll(".special-header")[2].offsetTop)
 };
 
 function createScrollButton() {
@@ -604,6 +602,7 @@ function createProjectSection(language) {
   [...filterUl.children].forEach((li) => {
     li.onclick = () => {
       filterButton.click();
+      openFilters();
       [...filterUl.children].forEach((li) => li.classList.remove("active"));
       li.classList.add("active");
       filterTitle.innerHTML = li.innerHTML;
@@ -672,7 +671,7 @@ function createWebsite(language) {
   }
   document.body.innerHTML = "";
   document.body.classList.add("backdrop");
-  createBackdropEffect()
+  createBackdropEffect();
   createHeader(language);
   createHomeSection(language);
   createAboutSection(language);
@@ -705,6 +704,11 @@ function createWebsite(language) {
     for (let i = 0; i < 4; i++) {
       if (scrollY >= sections[i].offsetTop - 300) {
         makeTheLinkActive(i);
+        window.history.replaceState(
+          { data: "some data" },
+          "New Title",
+          `/index.html#${sections[i].id}`
+        );
       }
     }
 
@@ -871,13 +875,13 @@ function createSpecialHeader(language, engHeader, arbHeader) {
 }
 
 function createBackdropEffect() {
-  let span = document.createElement("span")
-  span.id = "backdropEffect"
+  let span = document.createElement("span");
+  span.id = "backdropEffect";
 
   document.body.appendChild(span);
 }
 
 function createColorPicker() {
   let colors = document.createElement("div");
-  colors.className = "colors-picker"
+  colors.className = "colors-picker";
 }

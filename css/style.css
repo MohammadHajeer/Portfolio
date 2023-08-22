@@ -3,9 +3,10 @@
   --bg-color: #eee;
   --bg-color-2: rgba(0, 0, 0, 0.1);
   --text-color: black;
-  /* --high-light-color: #9703c9; */
-  /* --high-light-color: #c9034c; */
   --high-light-color: #03a1c9;
+  /* --high-light-color: #03c9a5; */
+  /* --high-light-color: #c9034c; */
+  /* --high-light-color: #c98003; */
   --par-color: rgba(0, 0, 0, 0.5);
   --bg-backdrop: rgba(255, 255, 255, 0.5);
   --selected-color: rgba(0, 0, 0, 0.1);
@@ -620,14 +621,13 @@ header .container ul li button i {
 body.lang header .container ul li button i {
   transform: rotate(180deg);
 }
-header .container ul li button .show-list,
-body.lang header .container ul li button .show-list {
+header .container ul li button .show-list {
   transform: rotate(0deg);
   color: var(--high-light-color);
 }
 header .container ul li button ul {
   position: absolute;
-  background-color: var(--high-light-color);
+  /* background-color: var(--high-light-color); */
   border-radius: 10px;
   left: 0;
   top: calc(100% + 5px);
@@ -640,11 +640,13 @@ header .container ul li button ul {
   overflow: hidden;
   transition: var(--transition-time);
   box-shadow: 0 0px 5px var(--main-color);
+  opacity: 0;
 }
 @media (max-width: 767px) {
   header .container ul li button ul {
     left: 50%;
     transform: translateX(-50%);
+    
   }
   body.lang header .container ul li button ul {
     left: auto;
@@ -654,6 +656,7 @@ header .container ul li button ul {
 }
 header .container ul li button ul.open-lang-menu {
   height: 80px;
+  opacity: 1;
 }
 @media (max-width: 767px) {
   header .container ul li button ul.open-lang-menu {
@@ -669,15 +672,16 @@ header .container ul li button ul li {
   text-align: left;
   transition: var(--transition-time);
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--high-light-color);
+  background-color: var(--main-color);
 }
 body.lang header .container ul li button ul li {
   text-align: right;
 }
 header .container ul li button ul li:hover,
 header .container ul li button ul .active-lang {
-  background-color: var(--main-color);
-  color: var(--high-light-color);
+  background-color: var(--high-light-color);
+  color: var(--text-color);
 }
 /* End Header */
 /* Start Home */
@@ -688,7 +692,7 @@ header .container ul li button ul .active-lang {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  min-height: 100vh;
+  padding: var(--padding) 0;
 }
 @media (max-width: 767px) {
   .home {
@@ -696,7 +700,6 @@ header .container ul li button ul .active-lang {
   }
 }
 .home .container {
-  margin-top: 20px;
   border-radius: 20px;
   background-color: var(--bg-color);
   display: flex;
@@ -711,7 +714,6 @@ header .container ul li button ul .active-lang {
 }
 @media (max-width: 996px) {
   .home .container {
-    margin-top: 120px;
     flex-direction: column;
   }
 }
@@ -723,7 +725,6 @@ header .container ul li button ul .active-lang {
     gap: 40px;
     height: 100%;
     box-shadow: none;
-    margin-top: 70px;
   }
   .home .container > div {
     width: 100%;
@@ -765,17 +766,47 @@ footer .links a:hover {
   width: 50%;
   transition: var(--transition-time);
   border-radius: 20px;
-  box-shadow: 0 0 20px var(--selected-color),
-    0 0 60px 40px var(--selected-color) inset;
 }
 .home .container .profile-pic:hover {
   filter: brightness(80%);
 }
 @media (max-width: 767px) {
   .home .container .profile-pic {
-  background-color: var(--selected-color);
-  width: 100%;
+    /* background-color: var(--selected-color); */
+    width: 100%;
   }
+}
+.home .container .profile-pic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 100px solid;
+  border-width: 100px;
+  border-color: var(--high-light-color) var(--high-light-color) var(--bg-color)
+    var(--bg-color);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--selected-color),
+    0 0 60px 40px var(--selected-color);
+  z-index: 11;
+  transition: var(--transition-time);
+}
+.home .container .profile-pic:hover::before {
+  transform: rotate(-90deg);
+}
+body.lang .home .container .profile-pic:hover::before {
+  transform: rotate(90deg);
+}
+@media (max-width: 767px) {
+  .home .container .profile-pic::before {
+    border-width: 65px;
+  }
+  body.dark-mode .home .container .profile-pic::before {
+    box-shadow: 0 0 20px var(--bg-color), 0 0 60px 40px var(--bg-color);
+  }
+}
+body.lang .home .container .profile-pic::before {
+  border-color: var(--high-light-color) var(--bg-color) var(--bg-color)
+    var(--high-light-color);
 }
 .home .container .profile-pic .my-self {
   position: absolute;
