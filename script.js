@@ -877,6 +877,7 @@ function createBackdropEffect() {
 }
 
 function createColorPicker() {
+  // Still not finished
   let colors = document.createElement("div");
   colors.className = "colors-picker";
 }

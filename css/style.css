@@ -646,7 +646,6 @@ header .container ul li button ul {
   header .container ul li button ul {
     left: 50%;
     transform: translateX(-50%);
-    
   }
   body.lang header .container ul li button ul {
     left: auto;
@@ -772,7 +771,6 @@ footer .links a:hover {
 }
 @media (max-width: 767px) {
   .home .container .profile-pic {
-    /* background-color: var(--selected-color); */
     width: 100%;
   }
 }
@@ -796,7 +794,7 @@ footer .links a:hover {
 body.lang .home .container .profile-pic:hover::before {
   transform: rotate(90deg);
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .home .container .profile-pic::before {
     border-width: 65px;
   }
