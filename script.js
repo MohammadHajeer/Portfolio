@@ -704,11 +704,6 @@ function createWebsite(language) {
     for (let i = 0; i < 4; i++) {
       if (scrollY >= sections[i].offsetTop - 300) {
         makeTheLinkActive(i);
-        window.history.replaceState(
-          { data: "some data" },
-          "New Title",
-          `/index.html#${sections[i].id}`
-        );
       }
     }
 
