@@ -193,7 +193,7 @@ function createHomeSection(language) {
   );
   createLink(
     "https://twitter.com/MuhammadHajeer?t=SXloirLuOBtw_b-lEDDhqg&s=09",
-    "fa-brands fa-twitter"
+    "fa-brands fa-x-twitter"
   );
   createLink("https://github.com/mohammadhajeer", "fa-brands fa-github");
   container.appendChild(socialLinks);
@@ -388,7 +388,7 @@ function createAboutSection(language) {
   createFeature(
     "fa fa-folder-open",
     language == "English" ? "Completed" : "مكتمل",
-    language == "English" ? "16+ Projects" : "16+ مشاريع"
+    language == "English" ? "20+ Projects" : "20+ مشاريع"
   );
   createFeature(
     "fa-solid fa-diagram-project",
@@ -629,7 +629,7 @@ function createFooter(language) {
   );
   createLink(
     "https://twitter.com/MuhammadHajeer?t=SXloirLuOBtw_b-lEDDhqg&s=09",
-    "fa-brands fa-twitter"
+    "fa-brands fa-x-twitter"
   );
   createLink("https://github.com/mohammadhajeer", "fa-brands fa-github");
   footer.appendChild(links);
