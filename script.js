@@ -181,6 +181,9 @@ function createHomeSection(language) {
   let container = document.createElement("div");
   container.className = "container";
 
+  let homeCard = document.createElement("div");
+  homeCard.className = "container home-card";
+
   let socialLinks = document.createElement("div");
   socialLinks.className = "social-links";
   createLink(
@@ -196,7 +199,7 @@ function createHomeSection(language) {
     "fa-brands fa-x-twitter"
   );
   createLink("https://github.com/mohammadhajeer", "fa-brands fa-github");
-  container.appendChild(socialLinks);
+  homeCard.appendChild(socialLinks);
 
   let profilePicture = document.createElement("div");
   profilePicture.className = "profile-pic";
@@ -212,7 +215,7 @@ function createHomeSection(language) {
       : "images/portfolio-image-1-ar.png";
   profileImage.alt = "Profile Image";
   profilePicture.appendChild(profileImage);
-  container.appendChild(profilePicture);
+  homeCard.appendChild(profilePicture);
 
   let details = document.createElement("div");
   details.className = "details";
@@ -273,7 +276,8 @@ function createHomeSection(language) {
   );
   scrollDownLink.appendChild(scrollDownLinkIcon2);
   details.appendChild(scrollDownLink);
-  container.appendChild(details);
+  homeCard.appendChild(details);
+  container.appendChild(homeCard)
   home.appendChild(container);
   document.body.appendChild(home);
 
