@@ -25,7 +25,9 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "Ubuntu", sans-serif;
+  /* font-family: "Ubuntu", sans-serif; */
+  /* font-family: 'Pacifico', cursive; */
+  font-family: 'Poppins', sans-serif;
 }
 body.dark-mode {
   --main-color: black;
@@ -137,10 +139,21 @@ z #loader {
     0 0 5px 3px var(--high-light-color) inset;
   z-index: 500;
   display: none;
+  animation: scroll-button-animation var(--transition-time) linear forwards;
+}
+@keyframes scroll-button-animation {
+  from {
+    opacity: 0;
+
+  }
+  to {
+    opacity: 100%;
+  }
 }
 #scrollButton i {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +182,7 @@ body.lang #backdropEffect {
   right: 0;
   transform: translate(100%, -100%);
 }
-@media (max-width: 996px) {
+@media (max-width: 991px) {
   #backdropEffect {
     transform: translate(-200%, 0);
   }
@@ -282,10 +295,12 @@ header .container h2 {
   margin-left: 40px;
   text-transform: uppercase;
   cursor: pointer;
+  font-family: 'Pacifico', cursive;
 }
 body.lang header .container h2 {
   margin-left: 0;
   margin-right: 40px;
+  font-family: "Cairo", sans-serif;
 }
 
 header .container h2 .logo-shape,
@@ -453,6 +468,7 @@ header .container ul li .active-shape {
   left: 50%;
   top: 5px;
   animation: active-shape-motion 0.3s linear forwards;
+  z-index: -1;
 }
 @media (max-width: 767px) {
   header .container ul li .active-shape {
@@ -564,7 +580,7 @@ header .container ul .close-menu:hover {
 header .container ul li:has(button) {
   margin-left: 40px;
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   header .container ul li:has(button) {
     margin-left: 0px;
   }
@@ -626,7 +642,6 @@ header .container ul li button .show-list {
 }
 header .container ul li button ul {
   position: absolute;
-  /* background-color: var(--high-light-color); */
   border-radius: 10px;
   left: 0;
   top: calc(100% + 5px);
@@ -713,9 +728,10 @@ header .container ul li button ul .active-lang {
   box-shadow: 0 0 20px 5px var(--main-color) inset,
     5px 0 0 var(--high-light-color), -5px 0 0 var(--high-light-color);
 }
-@media (max-width: 996px) {
+@media (max-width: 991px) {
   .home .container.home-card {
     flex-direction: column;
+    gap: 40px;
   }
 }
 @media (max-width: 767px) {
@@ -737,7 +753,7 @@ header .container ul li button ul .active-lang {
   justify-content: center;
   gap: 6px;
 }
-@media (max-width: 996px) {
+@media (max-width: 991px) {
   .home .container.home-card .social-links {
     flex-direction: row;
   }
@@ -827,10 +843,9 @@ body.lang .home .container.home-card .profile-pic::before {
   border-radius: 50%;
   box-shadow: 0 0 0 65px var(--high-light-color) inset;
 }
-@media (max-width: 1199px) { 
+@media (max-width: 1199px) {
   .home .container.home-card .profile-pic::after {
-    box-shadow: 0 0 0 40px var(--high-light-color) inset;  
-
+    box-shadow: 0 0 0 40px var(--high-light-color) inset;
   }
 }
 .home .container.home-card .profile-pic .my-self {
@@ -852,7 +867,7 @@ body.lang .home .container.home-card .profile-pic .my-self {
   gap: 20px;
   flex: 1;
 }
-@media (max-width: 996px) {
+@media (max-width: 991px) {
   .home .container.home-card .details {
     align-items: center;
     text-align: center;

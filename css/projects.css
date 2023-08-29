@@ -1,0 +1,19 @@
+/* Start Header */
+header {
+    background: none;
+    background-color: var(--bg-color-2);
+}
+header button {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+header button i {
+    color: var(--high-light-color);
+}
+/* End Header */
+/* Start Main */
+main {
+    min-height: calc(100vh - 70px);
+    background-color: var(--main-color);
+}
+/* End Main */

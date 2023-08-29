@@ -277,7 +277,7 @@ function createHomeSection(language) {
   scrollDownLink.appendChild(scrollDownLinkIcon2);
   details.appendChild(scrollDownLink);
   homeCard.appendChild(details);
-  container.appendChild(homeCard)
+  container.appendChild(homeCard);
   home.appendChild(container);
   document.body.appendChild(home);
 
@@ -880,8 +880,8 @@ function createBackdropEffect() {
   document.body.appendChild(span);
 }
 
-function createColorPicker() {
-  // Still not finished
-  let colors = document.createElement("div");
-  colors.className = "colors-picker";
-}
+// function createColorPicker() {
+//   // Still not finished
+//   let colors = document.createElement("div");
+//   colors.className = "colors-picker";
+// }
