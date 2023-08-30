@@ -288,6 +288,7 @@ header .container {
   height: 70px;
 }
 header .container h2 {
+  font-family: 'Pacifico', cursive;
   color: var(--high-light-color);
   letter-spacing: -2px;
   font-weight: 700;
@@ -295,7 +296,6 @@ header .container h2 {
   margin-left: 40px;
   text-transform: uppercase;
   cursor: pointer;
-  font-family: 'Pacifico', cursive;
 }
 body.lang header .container h2 {
   margin-left: 0;
@@ -580,9 +580,16 @@ header .container ul .close-menu:hover {
 header .container ul li:has(button) {
   margin-left: 40px;
 }
+body.lang header .container ul li:has(button) {
+  margin-right: 40px;
+  margin-left: 0;
+}
 @media (max-width: 991px) {
   header .container ul li:has(button) {
     margin-left: 0px;
+  }
+  body.lang header .container ul li:has(button) {
+    margin: 0;
   }
 }
 
@@ -910,8 +917,13 @@ body.lang .home .container.home-card .details p .auto-type {
 }
 .home .container.home-card .details p:last-of-type {
   font-size: 14px;
-  width: 70%;
+  width: 80%;
   color: var(--par-color);
+}
+@media (max-width: 767px) {
+  .home .container.home-card .details p:last-of-type {
+    width: 100%;
+  }
 }
 .home .container.home-card .details .download {
   margin-top: 30px;
