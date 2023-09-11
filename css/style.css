@@ -70,7 +70,7 @@ ul {
 a {
   text-decoration: none;
 }
-z #loader {
+#loader {
   width: 300px;
   height: 150px;
   position: fixed;
@@ -84,7 +84,7 @@ z #loader {
   border-radius: 20px;
 }
 #loader span {
-  background-color: var(--text-color);
+  background-color: var(--high-light-color);
   height: 20px;
   width: 15px;
   border-radius: 20px;
@@ -1118,9 +1118,6 @@ body.lang .home .container.home-card .details p .auto-type {
   align-items: center;
   justify-content: center;
 }
-/* body.dark-mode .skills .skill .progress-bar {
-  background-color: rgba(255, 255, 255, 0.4);
-} */
 .skills .skill .progress-bar::before {
   content: attr(data-completion);
   color: var(--main-color);
@@ -1145,6 +1142,9 @@ body.lang .home .container.home-card .details p .auto-type {
   box-shadow: 0 0 10px 10px var(--high-light-color);
   left: 0;
   animation: progress 1.5s linear infinite;
+}
+.skills .skill:hover {
+  animation-play-state: paused;
 }
 /* End Skills */
 /* Start Projects */
@@ -1296,6 +1296,11 @@ body.lang .home .container.home-card .details p .auto-type {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  transition: var(--transition-time);
+}
+.projects .container .project:hover .img {
+  transform: scale(1.1) translateY(-20px);
+  border-radius: 0;
 }
 .projects .container .project .title {
   position: absolute;
