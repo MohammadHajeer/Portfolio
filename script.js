@@ -211,8 +211,8 @@ function createHomeSection(language) {
   profileImage.className = "my-self";
   profileImage.src =
     language == "English"
-      ? "images/portfolio-image-1-en.png"
-      : "images/portfolio-image-1-ar.png";
+      ? "images/portfolio-image-1-en.webp"
+      : "images/portfolio-image-1-ar.webp";
   profileImage.alt = "Profile Image";
   profilePicture.appendChild(profileImage);
   homeCard.appendChild(profilePicture);
@@ -291,6 +291,7 @@ function createHomeSection(language) {
 
   function createLink(url, iconClassName) {
     let a = document.createElement("a");
+    a.ariaLabel = `visit my ${url.match(/\w+.com/gi)}`;
     a.href = url;
     a.target = "_blank";
     let icon = document.createElement("i");
@@ -361,7 +362,7 @@ function createAboutSection(language) {
   let portfolioImage = document.createElement("div");
   portfolioImage.className = "portfolio-image";
   let profileImage = document.createElement("img");
-  profileImage.src = "images/portfolio-image-2.png";
+  profileImage.src = "images/portfolio-image-2.webp";
   profileImage.alt = "Profile Image";
   portfolioImage.appendChild(profileImage);
   for (let i = 1; i <= 4; i++) {
@@ -410,7 +411,7 @@ function createAboutSection(language) {
     let icon = document.createElement("i");
     icon.className = iconClassName;
     feature.appendChild(icon);
-    let title = document.createElement("h4");
+    let title = document.createElement("h3");
     title.appendChild(document.createTextNode(name));
     feature.appendChild(title);
     let detail = document.createElement("span");
@@ -437,6 +438,7 @@ function createSkillsSection(language) {
   container.appendChild(createSkill("github", "Github", 50));
   container.appendChild(createSkill("reactjs", "React", 30));
   container.appendChild(createSkill("tailwindcss", "Tailwind-css", 40));
+  container.appendChild(createSkill("typescript", "Typescript", 35));
 
   skills.appendChild(container);
   document.body.appendChild(skills);
@@ -444,11 +446,13 @@ function createSkillsSection(language) {
   function createSkill(imgName, title, progress) {
     let skill = document.createElement("div");
     skill.className = "skill";
-    let skillName = document.createElement("h4");
+    let skillName = document.createElement("h3");
+    skillName.className = "title";
     skillName.appendChild(document.createTextNode(title));
     skill.appendChild(skillName);
     let skillLogo = document.createElement("img");
     skillLogo.src = `./images/${imgName}-icon.svg`;
+    skillLogo.alt = imgName;
     skill.appendChild(skillLogo);
     let skillCompletion = document.createElement("div");
     skillCompletion.setAttribute("data-completion", `${progress}%`);
@@ -648,6 +652,7 @@ function createFooter(language) {
 
   function createLink(url, iconClassName) {
     let a = document.createElement("a");
+    a.ariaLabel = `visit my ${url.match(/\w+.com/gi)}`;
     a.href = url;
     a.target = "_blank";
     let icon = document.createElement("i");
@@ -782,7 +787,7 @@ function createProjects(array, start, end, language) {
         tool == "tailwind-css" ? "css3" : tool
       }`;
       span.appendChild(toolIcon);
-      let text = document.createElement("h5");
+      let text = document.createElement("span");
       text.appendChild(document.createTextNode(tool));
       span.appendChild(text);
       tools.appendChild(span);
