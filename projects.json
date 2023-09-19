@@ -1,11 +1,27 @@
 [
     {
+        "Title": "Frontend-Mentor",
+        "Name": "Countries API-V2",
+        "NameAR": "البلاد API - V2",
+        "tools": [
+            "react",
+            "typescript",
+            "tailwind-css",
+            "framer-motion",
+            "react-router"
+        ],
+        "url": "https://frontend-mentor-api-countries-challenge-v2.vercel.app/",
+        "repo": "https://github.com/MohammadHajeer/Frontend-Mentor-API-Countries-Challenge-V2",
+        "src": "./images/Countries-API-V2.webp"
+    },
+    {
         "Title": "Youtube",
         "Name": "MetaVerse",
         "NameAR": "العالم الافتراضي",
         "tools": [
             "react",
-            "tailwind-css"
+            "tailwind-css",
+            "framer-motion"
         ],
         "url": "https://mohammadhajeer.github.io/MetaVerse",
         "repo": "https://github.com/MohammadHajeer/MetaVerse",
@@ -41,7 +57,8 @@
         "NameAR": "قائمة المهمات",
         "tools": [
             "react",
-            "tailwind-css"
+            "tailwind-css",
+            "framer-motion"
         ],
         "url": "https://mohammadhajeer.github.io/Todo-App",
         "repo": "https://github.com/MohammadHajeer/Todo-App",
