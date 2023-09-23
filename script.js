@@ -696,22 +696,30 @@ function createWebsite(language) {
 
   // Make the link active
   function makeTheLinkActive(index) {
-    let shape = document.createElement("span");
-    shape.className = "active-shape";
-    links.forEach((a) => {
-      a.parentElement.classList.remove("active");
-      if (a.parentElement.childElementCount == 2) {
-        a.parentElement.children[1].remove();
-      }
-    });
-    links[index].parentElement.classList.add("active");
-    links[index].parentElement.appendChild(shape);
+    if (!links[index].parentElement.classList.contains("active")) {
+      let shape = document.createElement("span");
+      shape.className = "active-shape";
+      links.forEach((a) => {
+        a.parentElement.classList.remove("active");
+        if (a.parentElement.childElementCount == 2) {
+          a.parentElement.children[1].remove();
+        }
+      });
+      links[index].parentElement.classList.add("active");
+      links[index].parentElement.appendChild(shape);
+    }
   }
 
   // Auto active the link while scrolling
   window.addEventListener("scroll", () => {
+    const sectionOffsets = [...sections].map(
+      (section) => section.offsetTop - 300
+    );
+    const sectionsOffsetsBottom = [...sections].map(
+      (section) => section.offsetTop + section.offsetHeight
+    );
     for (let i = 0; i < 4; i++) {
-      if (scrollY >= sections[i].offsetTop - 300) {
+      if (scrollY >= sectionOffsets[i] && scrollY < sectionsOffsetsBottom[i]) {
         makeTheLinkActive(i);
       }
     }
