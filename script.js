@@ -1,9 +1,8 @@
+document.body.appendChild(
+  document.createTextNode("LOADINGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+);
 window.onload = () => {
-  if (localStorage.language) {
-    createWebsite(localStorage.language);
-  } else {
-    createWebsite("English");
-  }
+  createWebsite(localStorage.language ? localStorage.language : "English");
 };
 
 function createScrollButton() {
@@ -888,8 +887,8 @@ function createBackdropEffect() {
   document.body.appendChild(span);
 }
 
+// Still not finished
 // function createColorPicker() {
-//   // Still not finished
 //   let colors = document.createElement("div");
 //   colors.className = "colors-picker";
 // }

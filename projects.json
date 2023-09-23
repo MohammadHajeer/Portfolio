@@ -5,6 +5,7 @@
         "NameAR": "البلاد API - V2",
         "tools": [
             "react",
+            "vite",
             "typescript",
             "tailwind-css",
             "framer-motion",
@@ -20,6 +21,7 @@
         "NameAR": "العالم الافتراضي",
         "tools": [
             "react",
+            "vite",
             "tailwind-css",
             "framer-motion"
         ],

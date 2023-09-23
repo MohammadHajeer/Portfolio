@@ -888,6 +888,7 @@ body.lang .home .container.home-card .details p .auto-type {
 .about .container img {
   width: 60%;
   height: 100%;
+  object-fit: cover;
 }
 .about .container img:hover {
   transition: var(--transition-time);
