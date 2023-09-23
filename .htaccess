@@ -1,0 +1,4 @@
+<FilesMatch "\.(ico|jpg|jpeg|png|gif|svg|webp)$">
+  ExpiresActive On
+  ExpiresDefault "access plus 10 years"
+</FilesMatch>
