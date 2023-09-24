@@ -1,8 +1,8 @@
-document.body.appendChild(
-  document.createTextNode("LOADINGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-);
+createWebsite(localStorage.language ? localStorage.language : "English");
+
 window.onload = () => {
-  createWebsite(localStorage.language ? localStorage.language : "English");
+  document.getElementById("loader").remove();
+  document.body.classList.remove("backdrop");
 };
 
 function createScrollButton() {
@@ -845,11 +845,10 @@ function createLoader() {
       i = 0;
     }
   }, 80);
-  setTimeout(() => {
-    clearInterval(handler);
-    document.getElementById("loader").remove();
-    document.body.classList.remove("backdrop");
-  }, 2000);
+  // setTimeout(() => {
+  //   clearInterval(handler);
+
+  // }, 2000);
 }
 
 function createSpecialHeader(language, engHeader, arbHeader) {
