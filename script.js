@@ -1,4 +1,5 @@
 createWebsite(localStorage.language ? localStorage.language : "English");
+loadingWebsite()
 
 window.onload = () => {
   document.getElementById("loader").remove();
@@ -678,7 +679,7 @@ function createWebsite(language) {
     document.body.classList.add("lang");
   }
   document.body.innerHTML = "";
-  document.body.classList.add("backdrop");
+  
   createBackdropEffect();
   createHeader(language);
   createHomeSection(language);
@@ -733,7 +734,10 @@ function createWebsite(language) {
   });
 
   links[0].click();
+}
 
+function loadingWebsite() {
+  document.body.classList.add("backdrop");
   createLoader();
 }
 

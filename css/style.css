@@ -265,6 +265,9 @@ body.lang #backdropEffect {
   font-weight: 700;
   cursor: pointer;
 }
+body.lang .btn {
+  font-family: Cairo, sans-serif;
+}
 .about,
 .contact,
 .home,
@@ -579,6 +582,9 @@ header .container ul li button span {
   color: var(--main-color);
   font-weight: 800;
 }
+body.lang header .container ul li button span {
+  font-family: Cairo, sans-serif;
+}
 header .container ul li button i {
   background-color: var(--main-color);
   color: var(--text-color);
@@ -599,11 +605,8 @@ header .container ul li button ul {
   overflow: hidden;
   transition: var(--transition-time);
 }
-body.lang header .container ul li button i {
-  transform: rotate(180deg);
-}
-header .container ul li button .show-list {
-  transform: rotate(0);
+header .container ul li button i.show-list{
+  transform: rotate(0deg);
   color: var(--high-light-color);
 }
 header .container ul li button ul {
@@ -616,6 +619,9 @@ header .container ul li button ul {
   align-items: flex-start;
   justify-content: center;
   box-shadow: 0 0 5px var(--main-color);
+}
+body.lang header .container ul li button ul {
+  font-family: Cairo, sans-serif;
 }
 header .container ul li button ul.open-lang-menu {
   height: 80px;
@@ -816,6 +822,7 @@ body.lang .home .container.home-card .profile-pic .my-self {
 .home .container.home-card .details p .auto-type {
   margin-left: 10px;
   color: var(--high-light-color);
+  height: 30px;
 }
 body.lang .home .container.home-card .details p .auto-type {
   margin-left: 0;
@@ -1236,7 +1243,7 @@ footer {
 .projects .container .project:hover .img {
   transform: scale(1.1) translateY(-20px);
   border-radius: 0;
-    opacity: 0.5;
+  opacity: 0.5;
 }
 .projects .container .project .title {
   position: absolute;
@@ -1254,7 +1261,7 @@ footer {
   opacity: 0.5;
 }
 .projects .container .project:hover .title {
-    opacity: 1;
+  opacity: 1;
   height: 100%;
 }
 .projects .container .project .tools {
