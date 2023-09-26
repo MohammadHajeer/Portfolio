@@ -605,10 +605,11 @@ header .container ul li button ul {
   overflow: hidden;
   transition: var(--transition-time);
 }
-header .container ul li button i.show-list{
+header .container ul li button i.show-list {
   transform: rotate(0deg);
   color: var(--high-light-color);
 }
+
 header .container ul li button ul {
   position: absolute;
   border-radius: 10px;
