@@ -1,5 +1,5 @@
 createWebsite(localStorage.language ? localStorage.language : "English");
-loadingWebsite()
+loadingWebsite();
 
 window.onload = () => {
   document.getElementById("loader").remove();
@@ -679,7 +679,7 @@ function createWebsite(language) {
     document.body.classList.add("lang");
   }
   document.body.innerHTML = "";
-  
+
   createBackdropEffect();
   createHeader(language);
   createHomeSection(language);
@@ -895,3 +895,17 @@ function createBackdropEffect() {
 //   let colors = document.createElement("div");
 //   colors.className = "colors-picker";
 // }
+
+// function createLogo() {
+//   let logo = document.createElement("div");
+//   logo.className = "logo_2";
+//   [1, 2, 3, 4].forEach((e) => {
+//     let span = document.createElement("span");
+//     span.className = `_${e}`;
+//     logo.appendChild(span);
+//   });
+
+//   document.body.appendChild(logo);
+// }
+
+// createLogo();
