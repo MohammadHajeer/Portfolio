@@ -881,6 +881,7 @@ body.lang .home .container.home-card .profile-pic .my-self {
 body.lang .home .container.home-card .details p .auto-type {
   margin-left: 0;
   margin-right: 10px;
+  height: 40px;
 }
 .home .container.home-card .details p .cursor {
   background-color: var(--bg-color);

@@ -694,6 +694,21 @@ function createWebsite(language) {
   let links = document.querySelectorAll("nav ul li a");
   let sections = document.querySelectorAll("body > div:not(:first-child)");
 
+  let options = {
+    threshold: 0.1,
+    rootMargin: "-200px",
+  };
+
+  let observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        makeTheLinkActive([...sections].indexOf(entry.target));
+      }
+    });
+  }, options);
+
+  [...sections].forEach((section) => observer.observe(section));
+
   // Make the link active
   function makeTheLinkActive(index) {
     if (!links[index].parentElement.classList.contains("active")) {
@@ -710,20 +725,7 @@ function createWebsite(language) {
     }
   }
 
-  // Auto active the link while scrolling
   window.addEventListener("scroll", () => {
-    const sectionOffsets = [...sections].map(
-      (section) => section.offsetTop - 300
-    );
-    const sectionsOffsetsBottom = [...sections].map(
-      (section) => section.offsetTop + section.offsetHeight
-    );
-    for (let i = 0; i < 4; i++) {
-      if (scrollY >= sectionOffsets[i] && scrollY < sectionsOffsetsBottom[i]) {
-        makeTheLinkActive(i);
-      }
-    }
-
     if (window.screen.width < 767) {
       if (scrollY > 400) {
         document.getElementById("scrollButton").style.display = "block";
@@ -732,8 +734,6 @@ function createWebsite(language) {
       }
     }
   });
-
-  links[0].click();
 }
 
 function loadingWebsite() {
