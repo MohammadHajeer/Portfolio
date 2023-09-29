@@ -696,7 +696,7 @@ function createWebsite(language) {
 
   let options = {
     threshold: 0.1,
-    rootMargin: "-200px",
+    rootMargin: window.screen.width > 767 ? "-200px" : "-50px",
   };
 
   let observer = new IntersectionObserver((entries, observer) => {
@@ -774,8 +774,8 @@ function createProjects(array, start, end, language) {
     let image = document.createElement("div");
     image.className = "image";
     let img = document.createElement("div");
+    observeImages(img, array[i].src);
     img.className = "img";
-    img.style.backgroundImage = `url(${array[i].src})`;
     let projectTitle = document.createElement("h3");
     projectTitle.className = "title";
     projectTitle.appendChild(
@@ -826,6 +826,24 @@ function createProjects(array, start, end, language) {
     project.appendChild(descriptions);
 
     projectsContainer.appendChild(project);
+  }
+
+  function observeImages(image, img) {
+    let options = {
+      threshold: 0.1,
+      rootMargin: window.screen.width > 767 ? "-100px" : "-50px",
+    };
+
+    let observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.backgroundImage = `url(${img})`;
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    observer.observe(image);
   }
 }
 

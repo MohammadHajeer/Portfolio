@@ -3,7 +3,8 @@
   --bg-color: #eee;
   --bg-color-2: rgba(0, 0, 0, 0.1);
   --text-color: black;
-  --high-light-color: #03a1c9;
+  --primary-color: #03a1c9;
+  --primary-alt-color: #03a1c982;
   --par-color: rgba(0, 0, 0, 0.5);
   --bg-backdrop: rgba(255, 255, 255, 0.5);
   --selected-color: rgba(0, 0, 0, 0.1);
@@ -29,7 +30,7 @@
 .logo_2 ._4 {
   position: absolute;
   display: block;
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
 }
 .logo_2 ._1,
 .logo_2 ._2 {
@@ -147,7 +148,7 @@ a {
   border-radius: 20px;
 }
 #loader span {
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   height: 20px;
   width: 15px;
   border-radius: 20px;
@@ -192,8 +193,7 @@ a {
   border-radius: 10px;
   background-color: var(--main-color);
   box-shadow: 0 0 5px 2px var(--main-color) inset,
-    0 0 5px 2px var(--main-color) inset,
-    0 0 5px 3px var(--high-light-color) inset;
+    0 0 5px 2px var(--main-color) inset, 0 0 5px 3px var(--primary-color) inset;
   z-index: 500;
   display: none;
   animation: scroll-button-animation var(--transition-time) linear forwards;
@@ -221,7 +221,7 @@ a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--high-light-color);
+  color: var(--primary-color);
 }
 body.lang #scrollButton {
   right: auto;
@@ -231,7 +231,7 @@ body.lang #scrollButton {
   display: block;
   width: 200px;
   height: 200px;
-  box-shadow: 0 0 800px 200px var(--high-light-color);
+  box-shadow: 0 0 800px 200px var(--primary-color);
   transform: translate(-100%, -100%);
   z-index: 2000;
 }
@@ -277,7 +277,7 @@ body.lang #backdropEffect {
   font-size: 40px;
   color: var(--text-color);
   letter-spacing: 3px;
-  color: var(--high-light-color);
+  color: var(--primary-color);
   width: fit-content;
   margin: 0 auto 60px;
   padding: 10px 30px;
@@ -286,13 +286,12 @@ body.lang #backdropEffect {
   z-index: 1;
   overflow: hidden;
   cursor: default;
-  box-shadow: 0 5px 0 var(--high-light-color);
+  box-shadow: 0 5px 0 var(--primary-color);
 }
 .special-header.hovered {
   color: var(--text-color);
-  box-shadow: 0 0 0 var(--high-light-color),
-    5px 0 0 var(--high-light-color) inset,
-    -5px 0 0 var(--high-light-color) inset;
+  box-shadow: 0 0 0 var(--primary-color), 5px 0 0 var(--primary-color) inset,
+    -5px 0 0 var(--primary-color) inset;
 }
 .special-header .ball {
   width: 1000px;
@@ -306,7 +305,7 @@ body.lang #backdropEffect {
   transition: 0.1s;
   border: 5px solid var(--main-color);
   background: 0 0;
-  box-shadow: 0 0 5px 1000px var(--high-light-color);
+  box-shadow: 0 0 5px 1000px var(--primary-color);
 }
 .btn {
   border: none;
@@ -335,6 +334,12 @@ header {
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
 }
+@media (min-width: 767px) {
+  header {
+    -webkit-mask: linear-gradient(0deg, transparent, white 10%);
+    mask: linear-gradient(0deg, transparent, white 10%);
+  }
+}
 header .container {
   display: flex;
   justify-content: space-between;
@@ -343,7 +348,7 @@ header .container {
 }
 header .container h2 {
   font-family: Pacifico, cursive;
-  color: var(--high-light-color);
+  color: var(--primary-color);
   letter-spacing: -2px;
   font-weight: 700;
   position: relative;
@@ -361,8 +366,8 @@ header .container h2 .logo-shape::after,
 header .container h2 .logo-shape::before {
   position: absolute;
   border: 15px solid;
-  border-color: var(--high-light-color) transparent var(--high-light-color)
-    var(--high-light-color);
+  border-color: var(--primary-color) transparent var(--primary-color)
+    var(--primary-color);
   border-radius: 50%;
   left: -40px;
   top: 50%;
@@ -381,8 +386,8 @@ header .container h2 .logo-shape::after {
 body.lang header .container h2 .logo-shape,
 body.lang header .container h2 .logo-shape::after,
 body.lang header .container h2 .logo-shape::before {
-  border-color: var(--high-light-color) var(--high-light-color)
-    var(--high-light-color) transparent;
+  border-color: var(--primary-color) var(--primary-color) var(--primary-color)
+    transparent;
   left: auto;
   right: -40px;
 }
@@ -411,7 +416,7 @@ header .container ul a {
 .projects .container .project .descriptions a i,
 .projects .container .project .tools .tool i,
 header .container ul li.active a {
-  color: var(--high-light-color);
+  color: var(--primary-color);
 }
 @media (max-width: 767px) {
   header .container ul {
@@ -455,13 +460,13 @@ header .container ul li.active a::before {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   width: 8px;
   height: 8px;
   border-radius: 50%;
   z-index: 11;
   transition: 1s;
-  box-shadow: 0 0 80px 20px var(--high-light-color);
+  box-shadow: 0 0 80px 20px var(--primary-color);
 }
 header .container ul a::before {
   transform: translate(-50%, 50%) scale(0);
@@ -474,7 +479,7 @@ header .container ul li.active a::after {
   content: "";
   position: absolute;
   width: 100%;
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   height: 1px;
   transform: translateY(50%);
   transform-origin: center;
@@ -491,14 +496,14 @@ header .container ul a:hover::after {
 header .container ul li .active-shape {
   position: absolute;
   border: 30px solid transparent;
-  border-color: var(--high-light-color) transparent transparent transparent;
+  border-color: var(--primary-color) transparent transparent transparent;
   left: 50%;
   top: 5px;
   animation: 0.3s linear forwards active-shape-motion;
   z-index: -1;
 }
 header .container nav .menu {
-  color: var(--high-light-color);
+  color: var(--primary-color);
   cursor: pointer;
 }
 header .container nav .menu i {
@@ -525,14 +530,14 @@ header .container ul #themeSwitcher {
     transform: scaleX(1);
   }
   header .container ul li .active-shape {
-    border-color: transparent var(--high-light-color) transparent transparent;
+    border-color: transparent var(--primary-color) transparent transparent;
     right: -15px;
     top: 50%;
     transform: translateY(-50%);
     animation: none;
   }
   body.lang header .container ul li .active-shape {
-    border-color: transparent transparent transparent var(--high-light-color);
+    border-color: transparent transparent transparent var(--primary-color);
     left: -15px;
   }
   header .container ul #themeSwitcher,
@@ -544,7 +549,7 @@ header .container ul #themeSwitcher {
     justify-content: center;
     padding: 0;
     font-size: 25px;
-    color: var(--high-light-color);
+    color: var(--primary-color);
     margin-left: auto;
   }
   body.lang header .container ul .close-menu {
@@ -577,7 +582,7 @@ header .container ul #themeSwitcher #switcher {
   background-color: var(--bg-color);
   border-radius: 50px;
   position: relative;
-  box-shadow: 0 0 1px var(--high-light-color) inset;
+  box-shadow: 0 0 1px var(--primary-color) inset;
 }
 header .container ul #themeSwitcher #switcher::before {
   content: "\f185";
@@ -590,7 +595,7 @@ header .container ul #themeSwitcher #switcher::before {
   top: 50%;
   transform: translate(0, -50%) rotate(-360deg);
   transition: var(--transition-time);
-  color: var(--high-light-color);
+  color: var(--primary-color);
   font-family: "Font Awesome 5 Free";
   font-size: 16px;
   font-weight: 800;
@@ -598,8 +603,8 @@ header .container ul #themeSwitcher #switcher::before {
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 5px 2px var(--main-color) inset,
-    0 0 5px 2px var(--main-color) inset,
-    0 0 5px 3px var(--high-light-color) inset, 0 0 5px var(--high-light-color);
+    0 0 5px 2px var(--main-color) inset, 0 0 5px 3px var(--primary-color) inset,
+    0 0 5px var(--primary-color);
 }
 header .container ul .close-menu:hover {
   background-color: var(--main-color);
@@ -623,7 +628,7 @@ header .container ul li button {
   margin-left: 10px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   position: relative;
 }
 header .container ul li button span {
@@ -660,7 +665,7 @@ header .container ul li button ul {
 }
 header .container ul li button i.show-list {
   transform: rotate(0deg);
-  color: var(--high-light-color);
+  color: var(--primary-color);
 }
 
 header .container ul li button ul {
@@ -690,7 +695,7 @@ header .container ul li button ul li {
   text-align: left;
   transition: var(--transition-time);
   font-weight: 500;
-  color: var(--high-light-color);
+  color: var(--primary-color);
   background-color: var(--main-color);
 }
 body.lang header .container ul li button ul li {
@@ -698,7 +703,7 @@ body.lang header .container ul li button ul li {
 }
 header .container ul li button ul .active-lang,
 header .container ul li button ul li:hover {
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   color: var(--text-color);
 }
 .home {
@@ -722,8 +727,10 @@ header .container ul li button ul li:hover {
   gap: 20px;
   padding: 20px;
   animation: 1s linear forwards open;
-  box-shadow: 0 0 20px 5px var(--main-color) inset,
-    5px 0 0 var(--high-light-color), -5px 0 0 var(--high-light-color);
+  box-shadow: 0 0 20px 5px var(--main-color) inset, 5px 0 0 var(--primary-color),
+    -5px 0 0 var(--primary-color);
+  /* -webkit-mask: linear-gradient(0deg, transparent, white 10%);
+  mask: linear-gradient(transparent, white 20%); */
 }
 .home .container.home-card .social-links {
   display: flex;
@@ -733,7 +740,7 @@ header .container ul li button ul li:hover {
 }
 .home .container.home-card .social-links a,
 footer .links a {
-  color: var(--high-light-color);
+  color: var(--primary-color);
   width: 30px;
   height: 30px;
   display: flex;
@@ -747,7 +754,7 @@ footer .links a {
 }
 .home .container.home-card .social-links a:hover,
 footer .links a:hover {
-  box-shadow: 0 0 10px 1px var(--high-light-color) inset,
+  box-shadow: 0 0 10px 1px var(--primary-color) inset,
     0 0 5px 2px var(--main-color) inset;
 }
 .home .container.home-card .profile-pic {
@@ -766,7 +773,7 @@ footer .links a:hover {
   position: absolute;
   inset: 0;
   border: 80px solid;
-  border-color: var(--high-light-color) var(--high-light-color) var(--bg-color)
+  border-color: var(--primary-color) var(--primary-color) var(--bg-color)
     var(--bg-color);
   border-radius: 50%;
   box-shadow: 0 0 20px var(--selected-color),
@@ -781,8 +788,8 @@ body.lang .home .container.home-card .profile-pic:hover::before {
   transform: rotate(90deg);
 }
 body.lang .home .container.home-card .profile-pic::before {
-  border-color: var(--high-light-color) var(--bg-color) var(--bg-color)
-    var(--high-light-color);
+  border-color: var(--primary-color) var(--bg-color) var(--bg-color)
+    var(--primary-color);
 }
 .home .container.home-card .profile-pic::after {
   content: "";
@@ -794,7 +801,7 @@ body.lang .home .container.home-card .profile-pic::before {
   transform: translate(-50%, -50%);
   background-color: #000;
   border-radius: 50%;
-  box-shadow: 0 0 0 65px var(--high-light-color) inset;
+  box-shadow: 0 0 0 65px var(--primary-color) inset;
 }
 @media (max-width: 1199px) {
   .home .container.home-card .profile-pic {
@@ -807,7 +814,7 @@ body.lang .home .container.home-card .profile-pic::before {
     box-shadow: 0 0 20px var(--bg-color), 0 0 60px 40px var(--bg-color);
   }
   .home .container.home-card .profile-pic::after {
-    box-shadow: 0 0 0 40px var(--high-light-color) inset;
+    box-shadow: 0 0 0 40px var(--primary-color) inset;
   }
 }
 .home .container.home-card .profile-pic .my-self {
@@ -875,7 +882,7 @@ body.lang .home .container.home-card .profile-pic .my-self {
 }
 .home .container.home-card .details p .auto-type {
   margin-left: 10px;
-  color: var(--high-light-color);
+  color: var(--primary-color);
   height: 30px;
 }
 body.lang .home .container.home-card .details p .auto-type {
@@ -890,8 +897,8 @@ body.lang .home .container.home-card .details p .auto-type {
   justify-content: center;
   width: 8px;
   height: 30px;
-  color: var(--high-light-color);
-  box-shadow: 0 0 5px var(--high-light-color) inset;
+  color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color) inset;
   border-radius: 5px;
   animation: 0.7s linear infinite cursor;
 }
@@ -903,17 +910,17 @@ body.lang .home .container.home-card .details p .auto-type {
 .home .container.home-card .details .download {
   margin-top: 30px;
   transition: 0.3s;
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   color: var(--main-color);
   overflow: hidden;
 }
 .home .container.home-card .details .download:hover {
-  box-shadow: 0 0 0 10px var(--bg-color), 0 0 10px 10px var(--high-light-color);
+  box-shadow: 0 0 0 10px var(--bg-color), 0 0 10px 10px var(--primary-color);
   color: var(--text-color);
 }
 .home .container.home-card .details .scroll {
   background: 0 0;
-  color: var(--high-light-color);
+  color: var(--primary-color);
   margin-top: 50px;
 }
 .home .container.home-card .details .scroll i,
@@ -957,7 +964,7 @@ body.lang .home .container.home-card .details p .auto-type {
   filter: brightness(80%);
 }
 .about .container .portfolio-image .desgin {
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   position: absolute;
 }
 .about .container .portfolio-image .desgin.d1,
@@ -1011,7 +1018,7 @@ body.lang .home .container.home-card .details p .auto-type {
 }
 .about .container .details .features .feature {
   background-color: var(--bg-color-2);
-  color: var(--high-light-color);
+  color: var(--primary-color);
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -1030,7 +1037,7 @@ body.lang .home .container.home-card .details p .auto-type {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
 }
 .about .container .details .features .feature span {
   color: var(--par-color);
@@ -1071,7 +1078,7 @@ body.lang .home .container.home-card .details p .auto-type {
 }
 .skills .skill .progress-bar {
   height: 25px;
-  background-color: var(--high-light-color);
+  background-color: var(--primary-color);
   position: relative;
   z-index: 1;
   display: flex;
@@ -1098,8 +1105,8 @@ body.lang .home .container.home-card .details p .auto-type {
   position: absolute;
   height: 100%;
   width: 1px;
-  background-color: var(--high-light-color);
-  box-shadow: 0 0 10px 10px var(--high-light-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px 10px var(--primary-color);
   left: 0;
   animation: 1.5s linear infinite progress;
 }
@@ -1110,12 +1117,6 @@ body.lang .home .container.home-card .details p .auto-type {
   background-color: var(--bg-color);
   overflow: hidden;
   position: relative;
-}
-.projects .container .projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 20px;
-  transition: 0.5s;
 }
 .projects .container .filter-projects {
   margin-bottom: 20px;
@@ -1180,7 +1181,7 @@ body.lang .home .container.home-card .details p .auto-type {
   background-color: var(--main-color);
 }
 .projects .container .filter-projects .projects-count {
-  color: var(--high-light-color);
+  color: var(--primary-color);
   font-weight: 700;
   gap: 10px;
   height: 60px;
@@ -1205,7 +1206,7 @@ footer {
   background-color: var(--bg-color-2);
 }
 .projects .container .projects-filter .title {
-  color: var(--high-light-color);
+  color: var(--primary-color);
   font-weight: 700;
   height: 40px;
   display: flex;
@@ -1225,7 +1226,7 @@ footer {
 }
 .projects .container .projects-filter #filterButton i.open {
   transform: rotate(180deg);
-  color: var(--high-light-color);
+  color: var(--primary-color);
 }
 .projects .container .projects-filter ul {
   position: absolute;
@@ -1257,7 +1258,7 @@ footer {
 }
 .projects .container .projects-filter ul li.active {
   font-weight: 700;
-  color: var(--high-light-color);
+  color: var(--primary-color);
 }
 .projects .container .projects-filter ul li::before {
   content: "";
@@ -1271,12 +1272,19 @@ footer {
 .projects .container .projects-filter ul li:hover::before {
   border-width: 200px;
 }
+
+.projects .container .projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+  transition: 0.5s;
+}
 .projects .container .project {
   border-radius: 20px;
   position: relative;
   overflow: hidden;
   animation: 1s linear forwards show-up;
-  box-shadow: 0 0 5px var(--bg-color-2), 0 4px 0 var(--high-light-color);
+  box-shadow: 0 0 5px var(--bg-color-2), 0 4px 0 var(--primary-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1290,22 +1298,24 @@ footer {
   height: 200px;
   border-radius: 20px;
   overflow: hidden;
+  background-image: url("../images/project-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   transition: var(--transition-time);
+  /* -webkit-mask: linear-gradient(180deg, transparent, black 10%); */
 }
 .projects .container .project:hover .img {
   transform: scale(1.1) translateY(-20px);
   border-radius: 0;
-  opacity: 0.5;
+  filter: brightness(80%);
 }
 .projects .container .project .title {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--bg-backdrop);
+  background-color: var(--primary-color);
   text-align: center;
   height: 20%;
   display: flex;
@@ -1313,11 +1323,10 @@ footer {
   align-items: center;
   color: var(--text-color);
   transition: var(--transition-time);
-  opacity: 0.5;
 }
 .projects .container .project:hover .title {
-  opacity: 1;
-  height: 100%;
+  background-color: var(--primary-alt-color);
+  /* height: 100%; */
 }
 .projects .container .project .tools {
   text-transform: capitalize;
@@ -1371,13 +1380,13 @@ body.lang .projects .container .project .tools {
 .projects .container button.show-more {
   margin: 20px auto 0;
   background: 0 0;
-  color: var(--high-light-color);
+  color: var(--primary-color);
   border: 1px dashed var(--text-color);
   align-items: flex-end;
   transition: var(--transition-time);
 }
 .projects .container button.show-more:hover {
-  box-shadow: 0 0 0 50px var(--high-light-color) inset;
+  box-shadow: 0 0 0 50px var(--primary-color) inset;
   color: var(--main-color);
   border-color: var(--main-color);
 }
@@ -1389,7 +1398,7 @@ footer .links {
   gap: 20px;
 }
 footer p {
-  color: var(--high-light-color);
+  color: var(--primary-color);
   text-align: center;
   padding: 10px 0;
   font-size: 12px;
