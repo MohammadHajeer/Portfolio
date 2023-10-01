@@ -334,12 +334,6 @@ header {
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
 }
-@media (min-width: 767px) {
-  header {
-    -webkit-mask: linear-gradient(0deg, transparent, white 10%);
-    mask: linear-gradient(0deg, transparent, white 10%);
-  }
-}
 header .container {
   display: flex;
   justify-content: space-between;
