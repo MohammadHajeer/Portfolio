@@ -867,10 +867,6 @@ function createLoader() {
       i = 0;
     }
   }, 80);
-  // setTimeout(() => {
-  //   clearInterval(handler);
-
-  // }, 2000);
 }
 
 function createSpecialHeader(language, engHeader, arbHeader) {
