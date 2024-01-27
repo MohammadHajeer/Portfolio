@@ -436,9 +436,10 @@ function createSkillsSection(language) {
   container.appendChild(createSkill("js", "Javascript", 60));
   container.appendChild(createSkill("git", "Git", 40));
   container.appendChild(createSkill("github", "Github", 50));
-  container.appendChild(createSkill("reactjs", "React", 30));
-  container.appendChild(createSkill("tailwindcss", "Tailwind-css", 40));
-  container.appendChild(createSkill("typescript", "Typescript", 35));
+  container.appendChild(createSkill("reactjs", "React", 65));
+  container.appendChild(createSkill("tailwindcss", "Tailwind-css", 50));
+  container.appendChild(createSkill("typescript", "Typescript", 40));
+  container.appendChild(createSkill("php", "PHP", 60));
 
   skills.appendChild(container);
   document.body.appendChild(skills);
