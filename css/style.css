@@ -55,7 +55,7 @@ body {
 body.dark-mode {
   --main-color: black;
   --bg-color: #1b1b1b;
-  --bg-color-2: rgba(0, 0, 0, 0.922);
+  --bg-color-2: rgba(17, 17, 17, 0.922);
   --text-color: white;
   --par-color: rgba(255, 255, 255, 0.5);
   --bg-backdrop: rgba(0, 0, 0, 0.5);
@@ -893,14 +893,17 @@ body.lang .home .container.home-card .details p .auto-type {
   width: 45%;
 }
 .about .container .portfolio-image {
-  background-color: #000;
+  background-color: var(--bg-color-2);
   display: flex;
-  justify-content: center;
+  justify-content: end;
   position: relative;
   border-radius: 0 20px;
 }
+body.lang .about .container .portfolio-image {
+  justify-content: start;
+}
 .about .container img {
-  width: 60%;
+  width: 70%;
   height: 100%;
   object-fit: cover;
 }
@@ -969,7 +972,7 @@ body.lang .home .container.home-card .details p .auto-type {
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  width: fit-content;
+  width: 200px;
   border-radius: 6px;
   position: relative;
   overflow: hidden;

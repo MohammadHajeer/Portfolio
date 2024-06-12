@@ -1,3 +1,5 @@
+import data from "./data.js";
+
 createWebsite(localStorage.language ? localStorage.language : "English");
 loadingWebsite();
 
@@ -186,19 +188,9 @@ function createHomeSection(language) {
 
   let socialLinks = document.createElement("div");
   socialLinks.className = "social-links";
-  createLink(
-    "https://www.facebook.com/smile.itzsunnah.1?mibextid=ZbWKwL",
-    "fa-brands fa-facebook-f"
+  data(language).links.forEach((link) =>
+    createLink(link.url, link.fontAwesomeIcon)
   );
-  createLink(
-    "https://www.linkedin.com/in/muhammad-hajeer-98b48b266",
-    "fa-brands fa-linkedin-in"
-  );
-  createLink(
-    "https://twitter.com/MuhammadHajeer?t=SXloirLuOBtw_b-lEDDhqg&s=09",
-    "fa-brands fa-x-twitter"
-  );
-  createLink("https://github.com/mohammadhajeer", "fa-brands fa-github");
   homeCard.appendChild(socialLinks);
 
   let profilePicture = document.createElement("div");
@@ -209,10 +201,7 @@ function createHomeSection(language) {
   profilePicture.appendChild(profileImageFrame);
   let profileImage = document.createElement("img");
   profileImage.className = "my-self";
-  profileImage.src =
-    language == "English"
-      ? "images/portfolio-image-1-en.webp"
-      : "images/portfolio-image-1-ar.webp";
+  profileImage.src = data(language).heroProfileImage;
   profileImage.alt = "Profile Image";
   profilePicture.appendChild(profileImage);
   homeCard.appendChild(profilePicture);
@@ -220,11 +209,7 @@ function createHomeSection(language) {
   let details = document.createElement("div");
   details.className = "details";
   let h1 = document.createElement("h1");
-  h1.appendChild(
-    document.createTextNode(
-      language == "English" ? "Mohammad Hajeer" : "محمد حجير"
-    )
-  );
+  h1.appendChild(document.createTextNode(data(language).name));
   details.appendChild(h1);
   let pStatus = document.createElement("p");
   let pSpan1 = document.createElement("span");
@@ -241,13 +226,7 @@ function createHomeSection(language) {
   pStatus.appendChild(pSpan3);
   details.appendChild(pStatus);
   let pDescription = document.createElement("p");
-  pDescription.appendChild(
-    document.createTextNode(
-      language == "English"
-        ? "I'm an intermediate in the frontend track from Palestine, and I'm very passionate and dedicated to my work."
-        : "انا جيد في مسار واجهة المستخدم ولله الحمد من فلسطين, وانا شغوف و ملتزم في عملي"
-    )
-  );
+  pDescription.appendChild(document.createTextNode(data(language).intro));
   details.appendChild(pDescription);
   let downloadCVButton = document.createElement("button");
   downloadCVButton.addEventListener("click", downloadCV);
@@ -302,10 +281,7 @@ function createHomeSection(language) {
 
   forwardType();
 
-  let words =
-    language == "English"
-      ? ["Frontend Developer", "Freelancer", "Student"]
-      : ["مبرمج واجهة المستخدم", "عمل حر", "طالب"];
+  let words = data(language).roles;
   let chosenWord = 0;
   function forwardType() {
     let i = 0;
@@ -362,7 +338,7 @@ function createAboutSection(language) {
   let portfolioImage = document.createElement("div");
   portfolioImage.className = "portfolio-image";
   let profileImage = document.createElement("img");
-  profileImage.src = "images/portfolio-image-2.webp";
+  profileImage.src = data(language).aboutProfileImage;
   profileImage.alt = "Profile Image";
   portfolioImage.appendChild(profileImage);
   for (let i = 1; i <= 4; i++) {
@@ -381,24 +357,13 @@ function createAboutSection(language) {
   details.appendChild(detailsH2);
   let detailsP = document.createElement("p");
   detailsP.appendChild(
-    document.createTextNode(
-      language == "English"
-        ? "Hello, I'm Mohammad, an intermediate frontend developer hoping to become a full-stack developer in the future, In-Shaa-Allah (If God wills)."
-        : "مرحبا, انا محمد مبرمج جيد في واجهة المستخدم متاملا ان اصبح مبرمج كامل (واجهة وخلفية) في المستقبل ان شاء الله تعالى"
-    )
+    document.createTextNode(data(language).aboutDescription)
   );
   details.appendChild(detailsP);
   let features = document.createElement("div");
   features.className = "features";
-  createFeature(
-    "fa fa-folder-open",
-    language == "English" ? "Completed" : "مكتمل",
-    language == "English" ? "20+ Projects" : "20+ مشاريع"
-  );
-  createFeature(
-    "fa-solid fa-diagram-project",
-    language == "English" ? "Support" : "دعم",
-    "12/7"
+  data(language).features.forEach((feature) =>
+    createFeature(feature.fontAwesomeIcon, feature.title, feature.amount)
   );
   details.appendChild(features);
   container.appendChild(details);
@@ -431,16 +396,11 @@ function createSkillsSection(language) {
   let container = document.createElement("div");
   container.className = "container";
 
-  container.appendChild(createSkill("html", "Html", 70));
-  container.appendChild(createSkill("css", "CSS", 70));
-  container.appendChild(createSkill("js", "Javascript", 60));
-  container.appendChild(createSkill("git", "Git", 40));
-  container.appendChild(createSkill("github", "Github", 50));
-  container.appendChild(createSkill("reactjs", "React", 65));
-  container.appendChild(createSkill("tailwindcss", "Tailwind-css", 50));
-  container.appendChild(createSkill("typescript", "Typescript", 40));
-  container.appendChild(createSkill("php", "PHP", 60));
-
+  data(language).skills.forEach((skill) =>
+    container.appendChild(
+      createSkill(skill.iconName, skill.title, skill.percentage)
+    )
+  );
   skills.appendChild(container);
   document.body.appendChild(skills);
 
@@ -452,8 +412,8 @@ function createSkillsSection(language) {
     skillName.appendChild(document.createTextNode(title));
     skill.appendChild(skillName);
     let skillLogo = document.createElement("img");
-    skillLogo.src = `./images/${imgName}-icon.svg`;
-    skillLogo.alt = imgName;
+    skillLogo.src = imgName;
+    skillLogo.alt = title;
     skill.appendChild(skillLogo);
     let skillCompletion = document.createElement("div");
     skillCompletion.setAttribute("data-completion", `${progress}%`);
@@ -628,19 +588,9 @@ function createFooter(language) {
   let footer = document.createElement("footer");
   let links = document.createElement("div");
   links.className = "links";
-  createLink(
-    "https://www.facebook.com/smile.itzsunnah.1?mibextid=ZbWKwL",
-    "fa-brands fa-facebook-f"
+  data(language).links.forEach((link) =>
+    createLink(link.url, link.fontAwesomeIcon)
   );
-  createLink(
-    "https://www.linkedin.com/in/muhammad-hajeer-98b48b266",
-    "fa-brands fa-linkedin-in"
-  );
-  createLink(
-    "https://twitter.com/MuhammadHajeer?t=SXloirLuOBtw_b-lEDDhqg&s=09",
-    "fa-brands fa-x-twitter"
-  );
-  createLink("https://github.com/mohammadhajeer", "fa-brands fa-github");
   footer.appendChild(links);
 
   let p = document.createElement("p");
