@@ -34,11 +34,11 @@ header {
 .special-header .ball {
   transform: translate(-50%, -50%);
 }
-.background-drop,
+/* .background-drop,
 .container,
-header .container ul a {
+header .container > ul > a {
   transition: var(--transition-time);
-}
+} */
 * {
   margin: 0;
   padding: 0;
@@ -233,7 +233,7 @@ body.lang #backdropEffect {
   margin: 0 auto 60px;
   padding: 10px 30px;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: var(--transition-time);
   z-index: 1;
   overflow: hidden;
   cursor: default;
@@ -695,10 +695,10 @@ footer .links a {
   box-shadow: 0 0 10px 1px var(--main-color) inset,
     0 0 5px 2px var(--main-color) inset;
   cursor: pointer;
-  transition: var(--transition-time);
 }
 .home .container.home-card .social-links a:hover,
 footer .links a:hover {
+  transition: var(--transition-time) box-shadow;
   box-shadow: 0 0 10px 1px var(--primary-color) inset,
     0 0 5px 2px var(--main-color) inset;
 }
@@ -724,7 +724,7 @@ footer .links a:hover {
   box-shadow: 0 0 20px var(--selected-color),
     0 0 60px 40px var(--selected-color);
   z-index: 11;
-  transition: var(--transition-time);
+  transition: var(--transition-time) transform;
 }
 .home .container.home-card .profile-pic:hover::before {
   transform: rotate(-90deg);
