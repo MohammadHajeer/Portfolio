@@ -25,8 +25,7 @@ header {
   width: 100%;
 }
 #loader,
-#scrollButton,
-header {
+#scrollButton {
   position: fixed;
 }
 #loader,
@@ -278,12 +277,33 @@ body.lang .btn {
 .skills {
   padding: var(--padding) 0;
 }
+#flag {
+  min-height: 40px;
+  padding: 10px;
+  background-color: var(--primary-color);
+  text-align: center;
+  flex-wrap: wrap;
+  color: var(--text-color);
+  z-index: 1000;
+  position: relative;
+}
+#flag a {
+  color: var(--text-color);
+  margin-inline: 10px;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+}
 header {
+  position: sticky;
   z-index: 999;
-  top: 0;
+  top: 0px;
   left: 0;
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
+  /* -webkit-backdrop-filter: blur(30px); */
+  /* backdrop-filter: blur(30px); */
+  /* overflow: hidden; */
+  background-color: var(--bg-color);
+  box-shadow: 0 0 5px var(--bg-color-2);
 }
 header .container {
   display: flex;
@@ -1007,10 +1027,9 @@ body.lang .about .container .portfolio-image {
   flex-direction: column;
   align-items: stretch;
   text-align: center;
-  gap: 10px;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 0 5px 5px var(--bg-color-2);
+  box-shadow: 0 0 20px var(--bg-color-2);
 }
 .skills .skill .title {
   font-size: 20px;
@@ -1019,10 +1038,11 @@ body.lang .about .container .portfolio-image {
   color: var(--text-color);
 }
 .skills .skill img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   display: block;
   margin: 0 auto;
+  padding: 20px;
 }
 .skills .skill .progress-bar {
   height: 25px;

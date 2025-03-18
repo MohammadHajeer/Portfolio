@@ -21,6 +21,30 @@ function createScrollButton() {
   };
 }
 
+function createFlag(language) {
+  const flag = document.createElement("div");
+  flag.id = "flag";
+  const flagText = document.createElement("p");
+  flagText.innerHTML =
+    language === "English"
+      ? "🇵🇸 <strong>Support Gaza:</strong> Donate or spread awareness."
+      : "🇵🇸 <strong>ادعم غزة:</strong> تبرع أو انشر الوعي.";
+
+  const link = document.createElement("a");
+  link.href = "https://www.phoenix-medical-point.org/";
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.innerHTML =
+    language === "English"
+      ? "<strong>Learn More →</strong>"
+      : "<strong>اعرف المزيد  ← </strong>";
+
+  
+  flagText.appendChild(link)
+  flag.appendChild(flagText);
+  document.body.appendChild(flag);
+}
+
 function createHeader(language) {
   let header = document.createElement("header");
   let container = document.createElement("div");
@@ -176,7 +200,7 @@ function createHeader(language) {
 }
 
 function createHomeSection(language) {
-  let home = document.createElement("div");
+  let home = document.createElement("section");
   home.className = "home";
   home.id = "Home";
 
@@ -317,7 +341,7 @@ function createHomeSection(language) {
 }
 
 function createAboutSection(language) {
-  let about = document.createElement("div");
+  let about = document.createElement("section");
   about.className = "about";
   about.id = "About";
 
@@ -387,7 +411,7 @@ function createAboutSection(language) {
 }
 
 function createSkillsSection(language) {
-  let skills = document.createElement("div");
+  let skills = document.createElement("section");
   skills.className = "skills";
   skills.id = "Skills";
 
@@ -418,17 +442,17 @@ function createSkillsSection(language) {
     let skillCompletion = document.createElement("div");
     skillCompletion.setAttribute("data-completion", `${progress}%`);
     skillCompletion.className = "progress-bar";
-    let completion = document.createElement("span");
-    completion.style.width = `${100 - progress}%`;
-    completion.className = "progress-completion";
-    skillCompletion.appendChild(completion);
-    skill.appendChild(skillCompletion);
+    // let completion = document.createElement("span");
+    // completion.style.width = `${100 - progress}%`;
+    // completion.className = "progress-completion";
+    // skillCompletion.appendChild(completion);
+    // skill.appendChild(skillCompletion);
     return skill;
   }
 }
 
 function createProjectSection(language) {
-  let projects = document.createElement("div");
+  let projects = document.createElement("section");
   projects.className = "projects";
   projects.id = "Projects";
 
@@ -631,7 +655,7 @@ function createWebsite(language) {
   }
   document.body.innerHTML = "";
 
-  createBackdropEffect();
+  createFlag(language);
   createHeader(language);
   createHomeSection(language);
   createAboutSection(language);
@@ -643,7 +667,9 @@ function createWebsite(language) {
   fetchProjects(0, 6, language, "All");
 
   let links = document.querySelectorAll("nav ul li a");
-  let sections = document.querySelectorAll("body > div:not(:first-child)");
+  let sections = document.querySelectorAll("section");
+
+  console.log(sections)
 
   let options = {
     threshold: 0.1,
@@ -846,13 +872,6 @@ function createSpecialHeader(language, engHeader, arbHeader) {
   });
 
   return h2;
-}
-
-function createBackdropEffect() {
-  let span = document.createElement("span");
-  span.id = "backdropEffect";
-
-  document.body.appendChild(span);
 }
 
 // Still not finished
